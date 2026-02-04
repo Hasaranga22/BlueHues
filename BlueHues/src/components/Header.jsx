@@ -29,11 +29,14 @@ function Header() {
         >
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex items-center justify-between py-4">
-                    {/* Logo / Brand */}
-                    <a href="#top" className="flex flex-col leading-none">
-                        <span className="text-2xl tracking-[0.18em] uppercase text-slate-900 font-light">
-                            Blue<span className="font-serif italic">Hues</span>
-                        </span>
+                    {/* Logo / Brand: use image asset */}
+                    <a href="#top" className="flex flex-col leading-none items-start">
+                        <img
+                            src="/images/BlueHuesLogo.png"
+                            alt="BlueHues"
+                            loading="lazy"
+                            className="h-10 md:h-12 object-contain"
+                        />
                         <span className="text-[11px] tracking-[0.26em] uppercase text-slate-500 mt-1">
                             Ceylon Gemstones
                         </span>

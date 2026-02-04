@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 // Contact Us section - Get in touch form and information
 function ContactUs() {
     const [isVisible, setIsVisible] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
     const sectionRef = useRef(null);
+    const formRef = useRef(null);
 
     // Form state
     const [formData, setFormData] = useState({
@@ -12,6 +16,27 @@ function ContactUs() {
         subject: '',
         message: ''
     });
+
+    // EmailJS Configuration
+    // To set up EmailJS:
+    // 1. Go to https://www.emailjs.com/ and create a free account
+    // 2. Create an email service (Gmail, Outlook, etc.)
+    // 3. Create an email template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
+    // 4. Get your Service ID, Template ID, and Public Key from the dashboard
+    // 5. Replace the values below with your actual IDs
+    
+    const EMAILJS_CONFIG = {
+        serviceId: 'YOUR_SERVICE_ID',      // Replace with your EmailJS Service ID
+        templateId: 'YOUR_TEMPLATE_ID',    // Replace with your EmailJS Template ID
+        publicKey: 'YOUR_PUBLIC_KEY'       // Replace with your EmailJS Public Key
+    };
+
+    // Initialize EmailJS
+    useEffect(() => {
+        if (EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY') {
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+        }
+    }, []);
 
     // Detect when section is visible for fade-in animation
     useEffect(() => {
@@ -42,22 +67,71 @@ function ContactUs() {
             ...prev,
             [name]: value
         }));
+        // Clear status message when user starts typing
+        if (submitStatus) {
+            setSubmitStatus(null);
+        }
     };
 
-    // Handle form submission
-    const handleSubmit = (e) => {
+    // Handle form submission with EmailJS
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Form submission logic will be added here
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! We will contact you soon.');
+        setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: ''
-        });
+        try {
+            // Check if EmailJS is configured
+            if (EMAILJS_CONFIG.serviceId === 'YOUR_SERVICE_ID' || 
+                EMAILJS_CONFIG.templateId === 'YOUR_TEMPLATE_ID' || 
+                EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+                throw new Error('EmailJS is not configured. Please set up your EmailJS credentials.');
+            }
+
+            // Prepare template parameters
+            // These variable names must match your EmailJS template variables
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+                to_email: 'newhasaranga2002@gmail.com', // Recipient email (set in EmailJS template)
+            };
+
+            // Send email using EmailJS
+            await emailjs.send(
+                EMAILJS_CONFIG.serviceId, 
+                EMAILJS_CONFIG.templateId, 
+                templateParams, 
+                EMAILJS_CONFIG.publicKey
+            );
+
+            // Success - show success message
+            setSubmitStatus('success');
+            
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+            // Clear success message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
+
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            setSubmitStatus('error');
+            
+            // Clear error message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 5000);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -80,7 +154,30 @@ function ContactUs() {
                         <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                             <h3 className="text-2xl font-light text-white mb-6 tracking-wide">Send us a message</h3>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                                {/* Success/Error Message */}
+                                {submitStatus === 'success' && (
+                                    <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-100 text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span>Thank you for your message! We have received it and will contact you soon.</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {submitStatus === 'error' && (
+                                    <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-100 text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span>Sorry, there was an error sending your message. Please try again or contact us directly.</span>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Name input */}
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-light text-slate-100 mb-2">
@@ -93,7 +190,8 @@ function ContactUs() {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="John Doe"
                                     />
                                 </div>
@@ -110,7 +208,8 @@ function ContactUs() {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="john@example.com"
                                     />
                                 </div>
@@ -127,7 +226,8 @@ function ContactUs() {
                                         value={formData.subject}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="Inquiry about gemstones"
                                     />
                                 </div>
@@ -143,8 +243,9 @@ function ContactUs() {
                                         value={formData.message}
                                         onChange={handleInputChange}
                                         required
+                                        disabled={isSubmitting}
                                         rows={5}
-                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors resize-none"
+                                        className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:outline-none focus:border-slate-200 transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="Tell us about your inquiry..."
                                     ></textarea>
                                 </div>
@@ -152,9 +253,20 @@ function ContactUs() {
                                 {/* Submit button */}
                                 <button
                                     type="submit"
-                                    className="w-full py-4 bg-white text-slate-900 rounded-lg font-light tracking-wide hover:bg-slate-100 transition-colors duration-300"
+                                    disabled={isSubmitting}
+                                    className="w-full py-4 bg-white text-slate-900 rounded-lg font-light tracking-wide hover:bg-slate-100 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 >
-                                    Send Message
+                                    {isSubmitting ? (
+                                        <>
+                                            <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <span>Sending...</span>
+                                        </>
+                                    ) : (
+                                        'Send Message'
+                                    )}
                                 </button>
                             </form>
                         </div>

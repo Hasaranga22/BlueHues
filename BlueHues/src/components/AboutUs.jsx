@@ -29,8 +29,19 @@ function AboutUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section ref={sectionRef} id="about" className="py-24 px-6 bg-white relative overflow-hidden">
+      {/* Background decoration image */}
+      <div 
+        className="absolute inset-0 opacity-[0.1] pointer-events-none"
+        style={{
+          backgroundImage: `url('https://ceyluvial.com/wp-content/uploads/2025/06/AdobeStock_543349239-scaled.webp')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section title */}
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-6xl font-light text-slate-900 mb-4 tracking-wide">

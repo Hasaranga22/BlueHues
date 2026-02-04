@@ -205,7 +205,7 @@ function ContactUs() {
                             </div>
 
                             {/* Business hours */}
-                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 h-[344px]">
                                 <h3 className="text-xl font-light text-white mb-4 tracking-wide">Business Hours</h3>
                                 <div className="space-y-2 text-slate-100 font-light">
                                     <p>Monday - Friday: 9:00 AM - 6:00 PM</p>

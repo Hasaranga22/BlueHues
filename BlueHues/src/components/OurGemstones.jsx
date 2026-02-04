@@ -32,6 +32,7 @@ function GemstoneCard({ gemstone, index }) {
     // Stagger animation delay for each card
     const delayClass = `delay-${Math.min(index * 100, 1000)}`;
 
+    console.log("Gemstone require ", gemstone);
     return (
         <div
             ref={cardRef}
@@ -42,19 +43,11 @@ function GemstoneCard({ gemstone, index }) {
             {/* Gemstone image */}
             <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 aspect-square">
                 {/* Optional image placeholder - replace when real asset is ready */}
-                {gemstone.image ? (
-                    <img
-                        src={gemstone.image}
-                        alt={`${gemstone.name} natural Sri Lankan gemstone sustainable mining ${gemstone.color}`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                ) : (
-                    <div className="w-full h-full flex items-center justify-center text-center px-4">
-                        <span className="font-serif italic text-slate-500 text-xs tracking-[0.18em] uppercase">
-                            {gemstone.name}
-                        </span>
-                    </div>
-                )}
+                <img
+                    src={`/images/BlueHuesGemsCollection/${gemstone.image}`}
+                    alt={`${gemstone.name} natural Sri Lankan gemstone sustainable mining ${gemstone.color}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/15 transition-all duration-500"></div>
             </div>

@@ -1,18 +1,18 @@
 // Gemstone class - Stores information about each gemstone
 // Simple class structure for easy maintenance
 class Gemstone {
-    constructor(id, name, description, color, origin, treatment) {
+    constructor(id, name, description, color, origin, treatment, image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.color = color;
         this.origin = origin;
         this.treatment = treatment;
+        this.image = image;
     }
 }
 
-// List of all gemstones - Easy to add or remove gemstones
-// Client can update this list as needed
+// List of all gemstones
 export const gemstonesList = [
     new Gemstone(
         1,
@@ -20,7 +20,8 @@ export const gemstonesList = [
         'The most sought-after sapphire, renowned for its deep blue color and exceptional clarity.',
         'Deep Blue',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem1.jpg'
     ),
     new Gemstone(
         2,
@@ -28,7 +29,8 @@ export const gemstonesList = [
         'Delicate and romantic, these sapphires range from light pink to vibrant hot pink.',
         'Pink',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem7.jpg'
     ),
     new Gemstone(
         3,
@@ -36,7 +38,8 @@ export const gemstonesList = [
         'Warm and radiant, symbolizing prosperity and wisdom in many cultures.',
         'Yellow',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem3.jpg'
     ),
     new Gemstone(
         4,
@@ -44,7 +47,8 @@ export const gemstonesList = [
         'Rare and precious, displaying a unique pink-orange color reminiscent of lotus blossoms.',
         'Pink-Orange',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem9.jpeg'
     ),
     new Gemstone(
         5,
@@ -52,7 +56,8 @@ export const gemstonesList = [
         'Clear and brilliant, a beautiful diamond alternative with excellent durability.',
         'White',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem2.jpg'
     ),
     new Gemstone(
         6,
@@ -60,7 +65,8 @@ export const gemstonesList = [
         'Vibrant and unique, ranging from light mint to deep forest green.',
         'Green',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem10.jpeg'
     ),
     new Gemstone(
         7,
@@ -68,7 +74,8 @@ export const gemstonesList = [
         'Majestic and rare, blending the nobility of blue with passion of pink.',
         'Purple',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem6.jpg'
     ),
     new Gemstone(
         8,
@@ -76,7 +83,8 @@ export const gemstonesList = [
         'Vibrant and energetic, capturing the warmth of tropical sunsets.',
         'Orange',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem4.jpg'
     ),
     new Gemstone(
         9,
@@ -84,7 +92,8 @@ export const gemstonesList = [
         'Mystical and captivating, displaying a six-ray star effect.',
         'Various',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem11.jpg'
     ),
     new Gemstone(
         10,
@@ -92,7 +101,8 @@ export const gemstonesList = [
         'Modern and sophisticated, a blue-green hybrid of natural beauty.',
         'Teal',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem5.jpg'
     ),
     new Gemstone(
         11,
@@ -100,7 +110,8 @@ export const gemstonesList = [
         'Soft and feminine, with delicate peachy-pink tones.',
         'Peach',
         'Sri Lanka',
-        'Heat-Treated'
+        'Heat-Treated',
+        'gem8.jpeg'
     ),
     new Gemstone(
         12,
@@ -108,7 +119,8 @@ export const gemstonesList = [
         'Elegant and understated, with warm golden-brown hues.',
         'Champagne',
         'Sri Lanka',
-        'Heat-Treated'
+        'Heat-Treated',
+        'gem1.jpg'
     ),
     new Gemstone(
         13,
@@ -116,7 +128,8 @@ export const gemstonesList = [
         'Delicate and dreamy, with soft purple-pink tones.',
         'Lavender',
         'Sri Lanka',
-        'Natural & Heat-Treated'
+        'Natural & Heat-Treated',
+        'gem3.jpg'
     ),
     new Gemstone(
         14,
@@ -124,7 +137,8 @@ export const gemstonesList = [
         'Unique and artistic, displaying two distinct colors in one stone.',
         'Multi-Color',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem6.jpg'
     ),
     new Gemstone(
         15,
@@ -132,7 +146,8 @@ export const gemstonesList = [
         'Magical and rare, changing color under different lighting conditions.',
         'Variable',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem9.jpeg'
     ),
     new Gemstone(
         16,
@@ -140,7 +155,8 @@ export const gemstonesList = [
         'Deep red semi-precious stone, symbolizing passion and energy.',
         'Red',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem2.jpg'
     ),
     new Gemstone(
         17,
@@ -148,7 +164,8 @@ export const gemstonesList = [
         'Vibrant and brilliant, often mistaken for ruby or sapphire.',
         'Various',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem4.jpg'
     ),
     new Gemstone(
         18,
@@ -156,7 +173,8 @@ export const gemstonesList = [
         'Colorful and versatile, available in a rainbow of hues.',
         'Various',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem7.jpg'
     ),
     new Gemstone(
         19,
@@ -164,7 +182,8 @@ export const gemstonesList = [
         'Brilliant and sparkly, with exceptional fire and luster.',
         'Various',
         'Sri Lanka',
-        'Heat-Treated'
+        'Heat-Treated',
+        'gem10.jpeg'
     ),
     new Gemstone(
         20,
@@ -172,7 +191,8 @@ export const gemstonesList = [
         'Ethereal and mystical, displaying a unique adularescence effect.',
         'White-Blue',
         'Sri Lanka',
-        'Natural'
+        'Natural',
+        'gem11.jpg'
     ),
 ];
 

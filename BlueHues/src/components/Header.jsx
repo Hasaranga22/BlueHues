@@ -24,10 +24,6 @@ function Header() {
                     {/* Brand */}
                     <a href="#top" className="flex items-center gap-3">
                         <img src="/images/BlueHuesLogo.png" alt="BlueHues" className="h-9 md:h-11 object-contain" />
-                        <div className="hidden sm:block leading-none">
-                            <div className="text-xs tracking-[0.18em] uppercase text-slate-600 font-light">Blue<span className="font-serif italic">Hues</span></div>
-                            <div className="text-[10px] tracking-[0.26em] uppercase text-slate-400 mt-0">Ceylon Gemstones</div>
-                        </div>
                     </a>
 
                     {/* Desktop nav */}

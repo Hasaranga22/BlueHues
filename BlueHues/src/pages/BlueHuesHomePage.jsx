@@ -6,6 +6,7 @@ import Sustainability from '../components/Sustainability';
 import OurGemstones from '../components/OurGemstones';
 import ContactUs from '../components/ContactUs';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
 // Main homepage component - Combines all sections
 // Each section is a separate component for easy maintenance
@@ -35,6 +36,7 @@ function BlueHuesHomePage() {
 
             {/* Global footer */}
             <Footer />
+            <ScrollToTop />
         </div>
     );
 }

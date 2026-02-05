@@ -32,7 +32,7 @@ function AboutUs() {
     <section ref={sectionRef} id="about" className="py-24 px-6 bg-white relative overflow-hidden">
       {/* Background decoration image */}
       <div 
-        className="absolute inset-0 opacity-[0.1] pointer-events-none"
+        className="absolute inset-0 opacity-[0.2] pointer-events-none"
         style={{
           backgroundImage: `url('https://ceyluvial.com/wp-content/uploads/2025/06/AdobeStock_543349239-scaled.webp')`,
           backgroundSize: 'cover',

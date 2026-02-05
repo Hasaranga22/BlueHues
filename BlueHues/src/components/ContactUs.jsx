@@ -150,9 +150,8 @@ function ContactUs() {
                         Inquiry <span className="italic font-serif">Form</span>
                     </h2>
                     <div className="w-20 h-px bg-slate-400 mx-auto my-6"></div>
-                    <p className="text-slate-600 max-w-2xl mx-auto">
-                        If you have any questions or would like to arrange an appointment,
-                        please complete the form below and we will respond within two business days.
+                    <p className="text-2xl md:text-3xl leading-relaxed text-slate-800 font-light mb-10 max-w-2xl mx-auto">
+                        If you have any <span className="font-serif italic text-lg tracking-wide uppercase">questions</span> or would like to <span className="font-serif italic text-slate-500 tracking-wide">arrange an appointment</span>, please complete the form below and we will respond within <span className="font-serif italic text-slate-500 text-5xl tracking-wide">two business days</span>.
                     </p>
                 </div>
 

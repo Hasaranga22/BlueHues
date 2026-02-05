@@ -31,16 +31,16 @@ function AboutUs() {
   return (
     <section ref={sectionRef} id="about" className="py-24 px-6 bg-white relative overflow-hidden">
       {/* Background decoration image */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.2] pointer-events-none"
         style={{
-          backgroundImage: `url('https://ceyluvial.com/wp-content/uploads/2025/06/AdobeStock_543349239-scaled.webp')`,
+          backgroundImage: `url('/images/About Us Bg image design.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center ',
           backgroundRepeat: 'no-repeat',
         }}
       />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section title */}
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -71,9 +71,6 @@ function AboutUs() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-slate-900/10" />
               </div>
             </div>
-
-            {/* Soft circular accent echoing gemstone shape */}
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-slate-100 rounded-full -z-10" />
           </div>
 
           {/* Text content side - Right */}

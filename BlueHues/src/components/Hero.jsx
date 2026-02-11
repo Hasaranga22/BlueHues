@@ -1,87 +1,137 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-// Hero section - First impression with elegant typography and premium background
 function Hero() {
-    // State to trigger fade-in animation
     const [isVisible, setIsVisible] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState(0);
+    const videoRef = useRef(null);
 
-    // Show hero content when component mounts
+    const videos = [
+        '/videos/Hero Section videos/gem1.mp4',
+        '/videos/Hero Section videos/gem2.mp4',
+        '/videos/Hero Section videos/gem3.mp4',
+        '/videos/Hero Section videos/gem4.mp4'
+    ];
+
     useEffect(() => {
         setIsVisible(true);
-        
-        // Preload background image
-        const img = new Image();
-        img.src = '/images/BlueHuesBanner.webp';
-        img.onload = () => setImageLoaded(true);
+        const interval = setInterval(() => {
+            setCurrentVideo((prev) => (prev + 1) % videos.length);
+        }, 14000);
+        return () => clearInterval(interval);
     }, []);
 
+    // Set slow playback rate when video loads
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 1; // Slow motion: 0.5 = half speed
+        }
+    }, [currentVideo]);
+
+    // Handle video selection
+    const handleVideoSelect = (index) => {
+        setCurrentVideo(index);
+    };
+
+    // Handle video load to set playback speed
+    const handleVideoLoad = () => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 0.5; // Slow motion playback
+        }
+    };
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background image with overlay */}
-            <div 
-                className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                style={{
-                    backgroundImage: `url('/images/BlueHuesBanner.webp')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950/85" />
-                
-                {/* Subtle animated gradient overlay for premium feel */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-slate-900/20 to-slate-950/40 animate-pulse" style={{ animationDuration: '8s' }} />
+        <section className="relative h-screen w-full bg-black overflow-hidden flex items-center justify-center">
+            {/* Background Image Layer */}
+            <div className="absolute inset-0">
+                <img
+                    src="/images/Blue Hues hero Image.jpeg"
+                    alt="Blue Hues Background"
+                    className="w-full h-full object-cover opacity-40"
+                />
+                {/* Overlay for better contrast */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
             </div>
 
-            {/* Decorative elements for depth */}
-            <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-20 -left-20 w-96 h-96 border border-white/10 rounded-full animate-pulse" style={{ animationDuration: '6s' }} />
-                <div className="absolute -bottom-32 right-0 w-[600px] h-[600px] border border-white/8 rounded-full animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
-            </div>
+            {/* Main Content Container */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    
+                    {/* Left - Stacked Video Cards (Increased Size) */}
+                    <div className={`relative w-full lg:w-1/2 transition-all duration-[3000ms] ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+                    }`}>
+                        <div className="relative aspect-[3/4] max-w-md lg:max-w-lg mx-auto">
+                            {/* Background cards for depth */}
+                            <div className="absolute inset-0 bg-white/5 rounded-3xl transform rotate-6 translate-x-8 translate-y-4 transition-transform duration-[2000ms]" />
+                            <div className="absolute inset-0 bg-white/10 rounded-3xl transform rotate-3 translate-x-4 translate-y-2 transition-transform duration-[2000ms]" />
+                            
+                            {/* Main video card */}
+                            <div className="relative w-full h-full overflow-hidden shadow-2xl rounded-3xl">
+                                <video
+                                    ref={videoRef}
+                                    key={currentVideo}
+                                    className="w-full h-full object-cover transition-opacity duration-[500ms]"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    onLoadedData={handleVideoLoad}
+                                >
+                                    <source src={videos[currentVideo]} type="video/mp4" />
+                                </video>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                            </div>
+                        </div>
+                    </div>
 
-            {/* Main hero content */}
-            <div className={`relative z-10 px-6 max-w-6xl w-full transition-all duration-1500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                {/* Main heading & copy with staggered animations */}
-                <div className="text-center">
-                    <h1 className={`text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-wide transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <span className="font-serif italic drop-shadow-2xl">Blue Hues</span>
-                    </h1>
+                    {/* Right - Content */}
+                    <div className={`w-full lg:w-1/2 text-center lg:text-left transition-all duration-[3000ms] delay-500 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+                    }`}>
+                        <p className="text-white/50 text-xs tracking-[0.5em] uppercase mb-8">
+                            Ceylon Gemstones · Sri Lanka
+                        </p>
+                        
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8">
+                            <span className="font-serif italic">Blue Hues</span>
+                        </h1>
+                        
+                        <p className="text-xl text-white/80 font-light leading-relaxed mb-4 max-w-lg mx-auto lg:mx-0">
+                            Sustainable gemstone mining and selling from the heart of<br></br> Sri Lanka.
+                        </p>
+                        <p className="text-base text-white/60 font-light leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">
+                            Preserving heritage, protecting nature, and honouring artisanal craftsmanship.
+                        </p>
 
-                    <p className={`text-sm md:text-base tracking-[0.28em] uppercase text-slate-200 mb-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        Ceylon Gemstones · Sri Lanka
-                    </p>
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
+                            <a href="#gemstones" className="px-10 py-4 bg-white text-black text-sm tracking-widest uppercase rounded-full hover:bg-white/90 hover:scale-105 transition-all duration-500">
+                                Explore
+                            </a>
+                            <a href="#sustainability" className="px-10 py-4 border border-white/40 text-white text-sm tracking-widest uppercase rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-500">
+                                OUr Sustainability
+                            </a>
+                        </div>
 
-                    <p className={`text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed font-light mb-4 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        Sustainable gemstone mining and selling from the heart of Sri Lanka.
-                    </p>
-                    <p className={`text-sm md:text-base text-slate-200 max-w-3xl mx-auto transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        Preserving heritage, protecting nature, and honouring artisanal craftsmanship.
-                    </p>
+                        {/* Video Navigation - Clickable Boxes */}
+                        <div className="flex justify-center lg:justify-start gap-4">
+                            {videos.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleVideoSelect(index)}
+                                    className={`w-12 h-12 rounded-xl text-sm cursor-pointer transition-all duration-700 ${
+                                        currentVideo === index 
+                                            ? 'bg-white/10 border-2 border-white text-white scale-110' 
+                                            : 'border border-white/30 text-white/40 hover:border-white/60 hover:text-white/80 hover:bg-white/5 hover:scale-105'
+                                    }`}
+                                    aria-label={`Select video ${index + 1}`}
+                                >
+                                    0{index + 1}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-
-                {/* Call to action buttons with smooth animations */}
-                <div className={`mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <a
-                        href="#gemstones"
-                        className="inline-flex px-10 py-3.5 bg-white text-slate-900 rounded-full text-sm tracking-[0.18em] uppercase font-medium hover:bg-slate-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                        Explore Gemstones
-                    </a>
-                    <a
-                        href="#sustainability"
-                        className="inline-flex px-10 py-3.5 border-2 border-white/80 text-white rounded-full text-sm tracking-[0.18em] uppercase font-light hover:bg-white/10 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
-                    >
-                        Our Responsibility
-                    </a>
-                </div>
-            </div>
-
-            {/* Scroll indicator with smooth animation */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-                <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
             </div>
         </section>
     );

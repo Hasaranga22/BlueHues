@@ -1,7 +1,7 @@
 // Gemstone class - Stores information about each gemstone
 // Simple class structure for easy maintenance
 class Gemstone {
-    constructor(id, name, description, color, origin, treatment, image) {
+    constructor(id, name, description, color, origin, treatment, image, measurement, video) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -9,6 +9,8 @@ class Gemstone {
         this.origin = origin;
         this.treatment = treatment;
         this.image = image;
+        this.measurement = measurement;
+        this.video = video;
     }
 }
 
@@ -21,7 +23,9 @@ export const gemstonesList = [
         'Deep Blue',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem1.jpg'
+        'gem1.jpg',
+        '2.5ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         2,
@@ -30,7 +34,9 @@ export const gemstonesList = [
         'Pink',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem7.jpg'
+        'gem7.jpg',
+        '1.8ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         3,
@@ -39,7 +45,9 @@ export const gemstonesList = [
         'Yellow',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem3.jpg'
+        'gem3.jpg',
+        '3.2ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         4,
@@ -48,7 +56,9 @@ export const gemstonesList = [
         'Pink-Orange',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem9.jpeg'
+        'gem9.jpeg',
+        '1.5ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         5,
@@ -57,7 +67,9 @@ export const gemstonesList = [
         'White',
         'Sri Lanka',
         'Natural',
-        'gem2.jpg'
+        'gem2.jpg',
+        '2.0ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         6,
@@ -66,7 +78,9 @@ export const gemstonesList = [
         'Green',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem10.jpeg'
+        'gem10.jpeg',
+        '2.8ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         7,
@@ -75,7 +89,9 @@ export const gemstonesList = [
         'Purple',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem6.jpg'
+        'gem6.jpg',
+        '1.7ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         8,
@@ -84,7 +100,9 @@ export const gemstonesList = [
         'Orange',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem4.jpg'
+        'gem4.jpg',
+        '2.3ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         9,
@@ -93,7 +111,9 @@ export const gemstonesList = [
         'Various',
         'Sri Lanka',
         'Natural',
-        'gem11.jpg'
+        'gem11.jpg',
+        '3.5ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         10,
@@ -102,7 +122,9 @@ export const gemstonesList = [
         'Teal',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem5.jpg'
+        'gem5.jpg',
+        '1.9ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         11,
@@ -111,7 +133,9 @@ export const gemstonesList = [
         'Peach',
         'Sri Lanka',
         'Heat-Treated',
-        'gem8.jpeg'
+        'gem8.jpeg',
+        '2.1ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         12,
@@ -120,7 +144,9 @@ export const gemstonesList = [
         'Champagne',
         'Sri Lanka',
         'Heat-Treated',
-        'gem1.jpg'
+        'gem1.jpg',
+        '2.6ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         13,
@@ -129,7 +155,9 @@ export const gemstonesList = [
         'Lavender',
         'Sri Lanka',
         'Natural & Heat-Treated',
-        'gem3.jpg'
+        'gem3.jpg',
+        '1.6ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         14,
@@ -138,7 +166,9 @@ export const gemstonesList = [
         'Multi-Color',
         'Sri Lanka',
         'Natural',
-        'gem6.jpg'
+        'gem6.jpg',
+        '2.2ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         15,
@@ -147,7 +177,9 @@ export const gemstonesList = [
         'Variable',
         'Sri Lanka',
         'Natural',
-        'gem9.jpeg'
+        'gem9.jpeg',
+        '1.4ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         16,
@@ -156,7 +188,9 @@ export const gemstonesList = [
         'Red',
         'Sri Lanka',
         'Natural',
-        'gem2.jpg'
+        'gem2.jpg',
+        '3.0ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         17,
@@ -165,7 +199,9 @@ export const gemstonesList = [
         'Various',
         'Sri Lanka',
         'Natural',
-        'gem4.jpg'
+        'gem4.jpg',
+        '2.4ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         18,
@@ -174,7 +210,9 @@ export const gemstonesList = [
         'Various',
         'Sri Lanka',
         'Natural',
-        'gem7.jpg'
+        'gem7.jpg',
+        '2.7ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
     new Gemstone(
         19,
@@ -183,7 +221,9 @@ export const gemstonesList = [
         'Various',
         'Sri Lanka',
         'Heat-Treated',
-        'gem10.jpeg'
+        'gem10.jpeg',
+        '1.8ct',
+        'Blue hues blueSapphire vid 1.mp4'
     ),
     new Gemstone(
         20,
@@ -192,7 +232,9 @@ export const gemstonesList = [
         'White-Blue',
         'Sri Lanka',
         'Natural',
-        'gem11.jpg'
+        'gem11.jpg',
+        '2.9ct',
+        'Blue hues blueSapphire vid 2.mp4'
     ),
 ];
 

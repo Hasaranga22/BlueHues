@@ -43,7 +43,10 @@ function Footer() {
                                 Contact
                             </h4>
                             <p className="text-slate-400 text-sm">
-                                Sri Lanka
+                                Blue Hues Ceylon<br />
+                                East Tower, World Trade Center<br />
+                                Hilton Dr, Echelon Square<br />
+                                Colombo 00100, Sri Lanka
                                 <br />
                                 info@bluehuceseylon.com
                                 <br />
@@ -55,7 +58,7 @@ function Footer() {
 
                 {/* Bottom bar */}
                 <div className="pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-slate-500">
-                    <p>© 2026 Blue Hues Ceylon. All rights reserved.</p>
+                    <p>© 2024-2026 Blue Hues Ceylon. All rights reserved.</p>
                     <p className="tracking-[0.16em] uppercase">
                         Ethical • Transparent • Sustainable
                     </p>

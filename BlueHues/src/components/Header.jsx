@@ -37,7 +37,7 @@ function Header() {
 
                     {/* Actions & Mobile menu button */}
                     <div className="flex items-center gap-3">
-                        <a href="#contact" className="hidden md:inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-full text-xs tracking-[0.18em] uppercase text-slate-800 hover:bg-slate-900 hover:text-white transition-colors duration-200">Enquire</a>
+                        <a href="#contact" className="hidden md:inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-full text-xs tracking-[0.18em] uppercase text-slate-800 hover:bg-slate-900 hover:text-white transition-colors duration-200">Inquire</a>
 
                         <button
                             aria-label="Toggle menu"

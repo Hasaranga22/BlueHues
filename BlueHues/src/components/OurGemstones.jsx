@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gemstonesList } from '../components/Gemstone ';
+import InquirySliderModal from './InquirySliderModal';
 
 // Gemstone Modal Component - Displays gemstone details in a pop-up
 function GemstoneModal({ gemstone, isOpen, onClose }) {
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
     useEffect(() => {
         // Prevent body scroll when modal is open
         if (isOpen) {
@@ -17,86 +20,161 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
 
     if (!isOpen || !gemstone) return null;
 
-    return (
-        <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
-            onClick={onClose}
-        >
-            {/* Modal content */}
-            <div 
-                className="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-scaleIn"
-                onClick={(e) => e.stopPropagation()}
-            >
-                {/* Close button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-                    aria-label="Close modal"
-                >
-                    <svg className="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+    // Function to get video based on gemstone
+    const getGemstoneVideo = (gemstone) => {
+        return `/videos/${gemstone.video}`;
+    };
 
-                <div className="grid md:grid-cols-2 gap-0">
-                    {/* Image side */}
-                    <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 aspect-square md:aspect-auto md:h-full min-h-[300px]">
-                        <img
-                            src={`/images/BlueHuesGemsCollection/${gemstone.image}`}
-                            alt={`${gemstone.name} natural Sri Lankan gemstone sustainable mining ${gemstone.color}`}
-                            className="w-full h-full object-cover"
+    // Function to format measurement with superscript
+    const formatMeasurement = (measurement) => {
+        const parts = measurement.match(/([0-9.]+)(.+)/);
+        if (parts) {
+            return (
+                <span>
+                    {parts[1]}<sup>{parts[2]}</sup>
+                </span>
+            );
+        }
+        return measurement;
+    };
+
+    const handleContactClick = () => {
+        setIsContactModalOpen(true);
+    };
+
+    const handleContactModalClose = () => {
+        setIsContactModalOpen(false);
+    };
+
+    return (
+        <>
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+                onClick={onClose}
+            >
+                {/* Modal content */}
+                <div
+                    className="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden animate-scaleIn"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {/* Close button */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                        aria-label="Close modal"
+                    >
+                        <svg className="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    {/* Video Section - Premium Luxury Layout */}
+                    <div className="relative h-96 md:h-[28rem] flex items-center justify-center overflow-hidden 
+    bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+
+                        {/* Soft Animated Glow Background */}
+                        <div
+                            className="absolute w-[500px] h-[500px] rounded-full blur-3xl opacity-60 animate-pulse"
+                            style={{
+                                background: `radial-gradient(circle, ${gemstone.name.toLowerCase() === "ruby"
+                                        ? "rgba(239,68,68,0.35), rgba(190,18,60,0.25), transparent"
+                                        : gemstone.name.toLowerCase() === "sapphire"
+                                            ? "rgba(59,130,246,0.35), rgba(37,99,235,0.25), transparent"
+                                            : gemstone.name.toLowerCase() === "emerald"
+                                                ? "rgba(34,197,94,0.35), rgba(16,185,129,0.25), transparent"
+                                                : "rgba(168,85,247,0.35), rgba(99,102,241,0.25), transparent"
+                                    })`
+                            }}
                         />
-                        {/* Gradient overlay for premium look */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
+
+                        {/* Video */}
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="h-full w-auto object-contain relative z-10"
+                            style={{ maxHeight: '100%' }}
+                        >
+                            <source src={getGemstoneVideo(gemstone)} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+                        {/* Premium Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t 
+        from-black/40 via-transparent to-transparent pointer-events-none z-20" />
+
+                        {/* Gemstone Name Overlay */}
+                        <div className="absolute bottom-6 left-6 text-white z-30 pointer-events-none">
+                            <h2 className="text-3xl md:text-4xl font-light tracking-wide">
+                                <span className="font-serif italic drop-shadow-lg">
+                                    {gemstone.name}
+                                </span>
+                            </h2>
+                        </div>
                     </div>
 
-                    {/* Content side */}
-                    <div className="p-8 md:p-10 overflow-y-auto max-h-[90vh] md:max-h-full">
-                        <div className="space-y-6">
-                            {/* Title */}
-                            <h2 className="text-4xl md:text-5xl font-light text-slate-900 tracking-wide">
-                                <span className="font-serif italic">{gemstone.name}</span>
-                            </h2>
 
-                            {/* Divider */}
-                            <div className="w-16 h-px bg-slate-300" />
-
-                            {/* Description */}
-                            <p className="text-lg text-slate-700 leading-relaxed font-light">
-                                {gemstone.description}
-                            </p>
-
-                            {/* Properties */}
-                            <div className="space-y-4 pt-4 border-t border-slate-200">
-                                <div className="flex items-start gap-4">
-                                    <span className="font-medium text-slate-900 min-w-[100px]">Color:</span>
-                                    <span className="text-slate-700">{gemstone.color}</span>
+                    {/* Content Section - 2 Columns */}
+                    <div className="p-8 md:p-10">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Left Column - Measurement */}
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="text-sm font-medium text-slate-600 mb-3 tracking-[0.18em] uppercase">
+                                        Measurement
+                                    </h3>
+                                    <div className="text-3xl md:text-4xl font-light text-slate-900">
+                                        {formatMeasurement(gemstone.measurement)}
+                                    </div>
                                 </div>
-                                <div className="flex items-start gap-4">
-                                    <span className="font-medium text-slate-900 min-w-[100px]">Origin:</span>
-                                    <span className="text-slate-700">{gemstone.origin}</span>
-                                </div>
-                                <div className="flex items-start gap-4">
-                                    <span className="font-medium text-slate-900 min-w-[100px]">Treatment:</span>
-                                    <span className="text-slate-700">{gemstone.treatment}</span>
+
+                                <div className="pt-6 border-t border-slate-200 w-70">
+                                    <div className="text-sm text-slate-600 space-y-2">
+                                        <p>{gemstone.description}</p>
+                                    </div>
                                 </div>
                             </div>
 
-                            {/* CTA Button */}
-                            <div className="pt-6">
-                                <a
-                                    href="#contact"
-                                    onClick={onClose}
-                                    className="inline-flex px-8 py-3 bg-slate-900 text-white rounded-full text-sm tracking-[0.18em] uppercase font-light hover:bg-slate-800 transition-colors duration-300"
-                                >
-                                    Inquire About This Gemstone
-                                </a>
+                            {/* Right Column - Properties */}
+                            <div className="space-y-6">
+                                <div className="space-y-4">
+                                    <div className="flex items-start gap-4">
+                                        <span className="font-medium text-slate-900 min-w-[100px]">Origin:</span>
+                                        <span className="text-slate-700">{gemstone.origin}</span>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <span className="font-medium text-slate-900 min-w-[100px]">Color:</span>
+                                        <span className="text-slate-700">{gemstone.color}</span>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <span className="font-medium text-slate-900 min-w-[100px]">Treatment:</span>
+                                        <span className="text-slate-700">{gemstone.treatment}</span>
+                                    </div>
+                                </div>
+
+                                {/* CTA Button */}
+                                <div className="pt-6">
+                                    <button
+                                        onClick={handleContactClick}
+                                        className="inline-flex px-8 py-3 bg-slate-900 text-white rounded-full text-sm tracking-[0.18em] uppercase font-light hover:bg-slate-800 transition-colors duration-300"
+                                    >
+                                        Inquire About This Gemstone
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            {/* Inquiry Modal */}
+            <InquirySliderModal
+                isOpen={isContactModalOpen}
+                onClose={handleContactModalClose}
+                gemstoneName={gemstone.name}
+            />
+        </>
     );
 }
 
@@ -162,22 +240,6 @@ function GemstoneCard({ gemstone, index, onCardClick }) {
                 <p className="text-sm text-slate-700 mb-4 leading-relaxed font-light">
                     {gemstone.description}
                 </p>
-
-                {/* Gemstone properties */}
-                <div className="space-y-2 text-xs text-slate-600">
-                    <div className="flex items-center gap-2">
-                        <span className="font-medium text-slate-800">Color:</span>
-                        <span>{gemstone.color}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="font-medium text-slate-800">Origin:</span>
-                        <span>{gemstone.origin}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="font-medium text-slate-800">Treatment:</span>
-                        <span>{gemstone.treatment}</span>
-                    </div>
-                </div>
             </div>
         </div>
     );
@@ -253,9 +315,9 @@ function OurGemstones() {
                     {/* Gemstones grid - 4 columns on desktop, responsive */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {gemstonesList.map((gemstone, index) => (
-                            <GemstoneCard 
-                                key={gemstone.id} 
-                                gemstone={gemstone} 
+                            <GemstoneCard
+                                key={gemstone.id}
+                                gemstone={gemstone}
                                 index={index}
                                 onCardClick={handleCardClick}
                             />
@@ -265,9 +327,9 @@ function OurGemstones() {
             </section>
 
             {/* Gemstone Modal */}
-            <GemstoneModal 
-                gemstone={selectedGemstone} 
-                isOpen={isModalOpen} 
+            <GemstoneModal
+                gemstone={selectedGemstone}
+                isOpen={isModalOpen}
                 onClose={handleCloseModal}
             />
         </>

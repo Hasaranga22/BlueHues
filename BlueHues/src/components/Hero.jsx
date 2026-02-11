@@ -40,7 +40,7 @@ function Hero() {
     };
 
     return (
-        <section className="relative h-screen w-full bg-black overflow-hidden flex items-center justify-center">
+        <section className="relative h-screen w-full bg-black overflow-hidden flex items-start justify-center pt-20">
             {/* Background Image Layer */}
             <div className="absolute inset-0">
                 <img

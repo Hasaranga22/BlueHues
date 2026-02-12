@@ -23,7 +23,7 @@ function Hero() {
     // Set slow playback rate when video loads
     useEffect(() => {
         if (videoRef.current) {
-            videoRef.current.playbackRate = 1; // Slow motion: 0.5 = half speed
+            videoRef.current.playbackRate = 1;
         }
     }, [currentVideo]);
 
@@ -35,12 +35,12 @@ function Hero() {
     // Handle video load to set playback speed
     const handleVideoLoad = () => {
         if (videoRef.current) {
-            videoRef.current.playbackRate = 0.5; // Slow motion playback
+            videoRef.current.playbackRate = 0.5;
         }
     };
 
     return (
-        <section className="relative h-screen w-full bg-black overflow-hidden flex items-start justify-center pt-20">
+        <section className="relative min-h-screen w-full bg-black overflow-hidden flex items-center justify-center py-12 sm:py-16 md:py-20">
             {/* Background Image Layer */}
             <div className="absolute inset-0">
                 <img
@@ -54,20 +54,20 @@ function Hero() {
             </div>
 
             {/* Main Content Container */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+                <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
                     
-                    {/* Left - Stacked Video Cards (Increased Size) */}
+                    {/* Left - Stacked Video Cards */}
                     <div className={`relative w-full lg:w-1/2 transition-all duration-[3000ms] ${
                         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
                     }`}>
-                        <div className="relative aspect-[3/4] max-w-md lg:max-w-lg mx-auto">
-                            {/* Background cards for depth */}
-                            <div className="absolute inset-0 bg-white/5 rounded-3xl transform rotate-6 translate-x-8 translate-y-4 transition-transform duration-[2000ms]" />
-                            <div className="absolute inset-0 bg-white/10 rounded-3xl transform rotate-3 translate-x-4 translate-y-2 transition-transform duration-[2000ms]" />
+                        <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] xl:max-w-[480px] mx-auto">
+                            {/* Background cards for depth - Hidden on very small screens */}
+                            <div className="hidden sm:block absolute inset-0 bg-white/5 rounded-2xl sm:rounded-3xl transform rotate-6 translate-x-4 sm:translate-x-6 lg:translate-x-8 translate-y-2 sm:translate-y-3 lg:translate-y-4 transition-transform duration-[2000ms]" />
+                            <div className="hidden sm:block absolute inset-0 bg-white/10 rounded-2xl sm:rounded-3xl transform rotate-3 translate-x-2 sm:translate-x-3 lg:translate-x-4 translate-y-1 sm:translate-y-1.5 lg:translate-y-2 transition-transform duration-[2000ms]" />
                             
                             {/* Main video card */}
-                            <div className="relative w-full h-full overflow-hidden shadow-2xl rounded-3xl">
+                            <div className="relative w-full h-full overflow-hidden shadow-xl sm:shadow-2xl rounded-2xl sm:rounded-3xl">
                                 <video
                                     ref={videoRef}
                                     key={currentVideo}
@@ -89,37 +89,44 @@ function Hero() {
                     <div className={`w-full lg:w-1/2 text-center lg:text-left transition-all duration-[3000ms] delay-500 ${
                         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
                     }`}>
-                        <p className="text-white/50 text-xs tracking-[0.5em] uppercase mb-8">
+                        <p className="text-white/50 text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] uppercase mb-4 sm:mb-6 lg:mb-8">
                             Ceylon Gemstones · Sri Lanka
                         </p>
                         
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extralight text-white mb-4 sm:mb-6 lg:mb-8">
                             <span className="font-serif italic">Blue Hues</span>
                         </h1>
                         
-                        <p className="text-xl text-white/80 font-light leading-relaxed mb-4 max-w-lg mx-auto lg:mx-0">
-                            Sustainable gemstone mining and selling from the heart of<br></br> Sri Lanka.
+                        <p className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-white/80 font-light leading-relaxed mb-3 sm:mb-4 max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0">
+                            Sustainable gemstone mining and selling from the heart of{' '}
+                            <span className="sm:block">Sri Lanka.</span>
                         </p>
-                        <p className="text-base text-white/60 font-light leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">
+                        <p className="text-sm sm:text-base md:text-base lg:text-lg text-white/60 font-light leading-relaxed mb-6 sm:mb-8 lg:mb-12 max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0">
                             Preserving heritage, protecting nature, and honouring artisanal craftsmanship.
                         </p>
 
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
-                            <a href="#gemstones" className="px-10 py-4 bg-white text-black text-sm tracking-widest uppercase rounded-full hover:bg-white/90 hover:scale-105 transition-all duration-500">
+                        <div className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-10 lg:mb-12">
+                            <a 
+                                href="#gemstones" 
+                                className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-white text-black text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase rounded-full hover:bg-white/90 hover:scale-105 transition-all duration-500"
+                            >
                                 Explore
                             </a>
-                            <a href="#sustainability" className="px-10 py-4 border border-white/40 text-white text-sm tracking-widest uppercase rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-500">
-                                OUr Sustainability
+                            <a 
+                                href="#sustainability" 
+                                className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 border border-white/40 text-white text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-500"
+                            >
+                                Our Sustainability
                             </a>
                         </div>
 
                         {/* Video Navigation - Clickable Boxes */}
-                        <div className="flex justify-center lg:justify-start gap-4">
+                        <div className="flex justify-center lg:justify-start gap-2 sm:gap-3 md:gap-4">
                             {videos.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleVideoSelect(index)}
-                                    className={`w-12 h-12 rounded-xl text-sm cursor-pointer transition-all duration-700 ${
+                                    className={`w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg sm:rounded-xl text-xs sm:text-sm cursor-pointer transition-all duration-700 ${
                                         currentVideo === index 
                                             ? 'bg-white/10 border-2 border-white text-white scale-110' 
                                             : 'border border-white/30 text-white/40 hover:border-white/60 hover:text-white/80 hover:bg-white/5 hover:scale-105'

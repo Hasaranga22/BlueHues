@@ -50,7 +50,7 @@ function Footer() {
                                 <br />
                                 info@bluehuceseylon.com
                                 <br />
-                                +94 XX XXX XXXX
+                                +94 72 855 3880
                             </p>
                         </div>
                     </div>

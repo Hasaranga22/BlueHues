@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { gemstonesList } from '.Gemstone ';
+import { gemstonesList } from '../components/Gemstone ';
 import InquirySliderModal from './InquirySliderModal';
 
 // Gemstone Modal Component - Displays gemstone details in a pop-up
@@ -132,48 +132,13 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                 <div className="pt-6 border-t border-slate-200 w-70">
                                     <div className="text-sm text-slate-600 space-y-2">
                                         <p>{gemstone.description}</p>
-                                        
-                                        {/* Contact Information */}
-                                        <div className="mt-4 p-4 bg-slate-50 rounded-lg">
-                                            <h4 className="text-sm font-medium text-slate-900 mb-2">Contact for Inquiries</h4>
-                                            <div className="space-y-2">
-                                                <div className="flex items-center gap-2">
-                                                    <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zm0 14a1 1 0 102 2H7a1 1 0 102-1v10a1 1 0 001 1h8a1 1 0 001-1z" />
-                                                    </svg>
-                                                    <span className="text-slate-700">+94 72 855 3880</span>
-                                                </div>
-                                                
-                                                {/* Mobile Click-to-Call Button */}
-                                                <a 
-                                                    href="tel:+94728553880" 
-                                                    className="md:hidden inline-flex items-center justify-center w-full px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors duration-300"
-                                                >
-                                                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zm0 14a1 1 0 102 2H7a1 1 0 102-1v10a1 1 0 001 1h8a1 1 0 001-1z" />
-                                                    </svg>
-                                                    Call Now
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Right Column - Properties */}
-                                <div className="space-y-6">
-                                    <div className="space-y-4">
-                                        <div className="flex items-start gap-4">
-                                            <span className="font-medium text-slate-900 min-w-[100px]">Origin:</span>
-                                            <span className="text-slate-700">{gemstone.origin}</span>
-                                        </div>
-                                        <div className="flex items-start gap-4">
-                                            <span className="font-medium text-slate-900 min-w-[100px]">Color:</span>
-                                            <span className="text-slate-700">{gemstone.color}</span>
-                                        </div>
-                                        <div className="flex items-start gap-4">
-                                            <span className="font-medium text-slate-900 min-w-[100px]">Treatment:</span>
-                                            <span className="text-slate-700">{gemstone.treatment}</span>
-                                        </div>
+                            {/* Right Column - Properties */}
+                            <div className="space-y-6">
+                                <div className="space-y-4">
                                     <div className="flex items-start gap-4">
                                         <span className="font-medium text-slate-900 min-w-[100px]">Origin:</span>
                                         <span className="text-slate-700">{gemstone.origin}</span>

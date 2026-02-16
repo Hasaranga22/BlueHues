@@ -54,7 +54,7 @@ function InquirySliderModal({ isOpen, onClose, gemstoneName = '' }) {
                 from_email: formData.email,
                 subject: formData.subject,
                 message: formData.message,
-                to_email: 'newhasaranga2002@gmail.com',
+                to_email: 'sk0005i@icloud.com',
             };
 
             await emailjs.send(
@@ -140,7 +140,13 @@ function InquirySliderModal({ isOpen, onClose, gemstoneName = '' }) {
                     {/* Status Messages */}
                     {submitStatus === 'success' && (
                         <div className="border border-green-300 bg-green-50 rounded-lg p-4 text-green-700 text-sm mb-6 animate-slideDown">
-                            Message sent successfully! We'll get back to you shortly.
+                            <div className="flex items-center mb-2">
+                                <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2 2V5a2 2 0 012-2zm0 14a1 1 0 102 2H7a1 1 0 102-1v10a1 1 0 001 1h8a1 1 0 001 1z" />
+                                </svg>
+                                <span className="font-medium">Thank you for your inquiry!</span>
+                            </div>
+                            <p className="text-sm">Your message has been successfully sent to Blue Hues. We will respond to your inquiry within two business days.</p>
                         </div>
                     )}
 

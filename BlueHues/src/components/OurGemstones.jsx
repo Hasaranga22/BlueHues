@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { gemstonesList } from '../components/Gemstone ';
+import { gemstonesList } from '.Gemstone ';
 import InquirySliderModal from './InquirySliderModal';
 
 // Gemstone Modal Component - Displays gemstone details in a pop-up

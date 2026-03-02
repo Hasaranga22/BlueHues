@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { config } from '../config.js';
 
 // Contact Us section - Get in touch form and information
 function ContactUs() {
@@ -17,19 +18,16 @@ function ContactUs() {
         message: ''
     });
 
-    // EmailJS Configuration
-    // To set up EmailJS:
-    // 1. Go to https://www.emailjs.com/ and create a free account
-    // 2. Create an email service (Gmail, Outlook, etc.)
-    // 3. Create an email template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-    // 4. Get your Service ID, Template ID, and Public Key from the dashboard
-    // 5. Replace the values below with your actual IDs
-
     const EMAILJS_CONFIG = {
-        serviceId: 'service_15tn1l2',      // Replace with your EmailJS Service ID
-        templateId: 'service_15tn1l2',    // Replace with your EmailJS Template ID
-        publicKey: 'cyUpel7fXrPzmjgf-'       // Replace with your EmailJS Public Key
+        serviceId: config.emailjs.serviceId,
+        templateId: config.emailjs.templateId,
+        publicKey: config.emailjs.publicKey
     };
+
+    console.log(
+        "EMAILJS_CONFIG",
+        EMAILJS_CONFIG
+    )
 
     // Initialize EmailJS
     useEffect(() => {

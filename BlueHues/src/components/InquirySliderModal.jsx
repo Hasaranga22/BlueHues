@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { config } from '../config.js';
 
 // Inquiry Slider Modal Component - Slides in from right to left
 function InquirySliderModal({ isOpen, onClose, gemstoneName = '' }) {
@@ -15,11 +16,11 @@ function InquirySliderModal({ isOpen, onClose, gemstoneName = '' }) {
         message: gemstoneName ? `I am interested in learning more about the ${gemstoneName}.` : ''
     });
 
-    // EmailJS Configuration (same as ContactUs component)
+    // EmailJS Configuration
     const EMAILJS_CONFIG = {
-        serviceId: 'service_15tn1l2',
-        templateId: 'service_15tn1l2',
-        publicKey: 'cyUpel7fXrPzmjgf-'
+        serviceId: config.emailjs.serviceId,
+        templateId: config.emailjs.templateId,
+        publicKey: config.emailjs.publicKey
     };
 
     // Initialize EmailJS

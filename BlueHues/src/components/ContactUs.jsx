@@ -24,11 +24,6 @@ function ContactUs() {
         publicKey: config.emailjs.publicKey
     };
 
-    console.log(
-        "EMAILJS_CONFIG",
-        EMAILJS_CONFIG
-    )
-
     // Initialize EmailJS
     useEffect(() => {
         if (EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY') {

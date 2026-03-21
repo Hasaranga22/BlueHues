@@ -283,7 +283,7 @@ function OurGemstones() {
     // Handle modal close
     const handleCloseModal = () => {
         setIsModalOpen(false);
-        setTimeout(() => setSelectedGemstone(null), 300); // Delay to allow animation
+        setTimeout(() => setSelectedGemstone(null), 500); // Delay to allow animation
     };
 
     // Handle ESC key to close modal

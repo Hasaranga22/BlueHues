@@ -1,7 +1,7 @@
 // Gemstone class - Stores information about each gemstone
 // Simple class structure for easy maintenance
 class Gemstone {
-    constructor(id, name, description, color, origin, treatment, image, measurement, video) {
+    constructor(id, name, description, color, origin, treatment, image, measurement, video, clarity) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -11,6 +11,7 @@ class Gemstone {
         this.image = image;
         this.measurement = measurement;
         this.video = video;
+        this.clarity = clarity;
     }
 }
 
@@ -136,6 +137,64 @@ export const gemstonesList = [
         'stone11.png',
         '9.10ct',
         'BlueHuesGemsVideoCollection/stone11.mp4'
+    ),
+    new Gemstone(
+        12,
+        '6.57 CTs Natural Heated Blue Sapphire Ceylon',
+        'A gorgeous royal blue heated sapphire faceted in a classic oval-shaped design, 9.10 carats.',
+        'Royal Blue sapphire',
+        'Sri Lanka',
+        'Heated',
+        'stone12.png',
+        '6.57 CTS',
+        'BlueHuesGemsVideoCollection/stone12.mp4',
+        'Eye clean (VVS 2)'
+    ),
+    new Gemstone(
+        13,
+        'Natural Blue Sapphire (Unheated)',
+        'GRS Certified | 151.04 Carat Collector Grade Sapphire',
+        'Blue',
+        'Sri Lanka',
+        'Unheated',
+        'stone13.png',
+        '151.04 CTS (27.37 x 25.81 x 22.60 mm)',
+        'BlueHuesGemsVideoCollection/stone13.mp4',
+        'High Clarity (Eye Clean)'
+    ),
+    new Gemstone(
+        14,
+        'Royal Blue Sapphire',
+        'GIA Certified',
+        'Natural Blue Sapphire',
+        'Sri Lanka (Ceylon)',
+        'Heat Treated',
+        'stone14.png',
+        '1+ CTS',
+        'BlueHuesGemsVideoCollection/stone14.mp4',
+        'Eye Clean (VVS2)'
+    ),
+    new Gemstone(
+        15,
+        '3.48 Cts heated Ceylon Sapphire',
+        'GIA Certified',
+        'Natural Blue Sapphire',
+        'Sri Lanka (Ceylon)',
+        'Heat Treated',
+        'stone15.png',
+        '3.48 CTS',
+        'BlueHuesGemsVideoCollection/stone15.mp4',
+    ),
+    new Gemstone(
+        15,
+        '3.11 Cts heated Ceylon Sapphire',
+        'GIA Certified',
+        'Natural Blue Sapphire',
+        'Sri Lanka (Ceylon)',
+        'Heat Treated',
+        'stone16.png',
+        '3.11 CTS',
+        'BlueHuesGemsVideoCollection/stone16.mp4',
     )
 ];
 

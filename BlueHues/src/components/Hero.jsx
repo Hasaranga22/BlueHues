@@ -46,7 +46,7 @@ function Hero() {
                 <img
                     src="/images/Blue Hues hero Image.jpeg"
                     alt="Blue Hues Background"
-                    className="w-full h-full object-cover opacity-85"
+                    className="w-full h-full object-cover opacity-70"
                 />
                 {/* Overlay for better contrast */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />

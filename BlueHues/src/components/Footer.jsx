@@ -50,7 +50,7 @@ function Footer() {
                                 <br />
                                 info@bluehuceseylon.com
                                 <br />
-                                +94 72 855 3880
+                                +94 72 355 3882
                             </p>
                         </div>
                     </div>

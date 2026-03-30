@@ -1,7 +1,7 @@
 // Gemstone class - Stores information about each gemstone
 // Simple class structure for easy maintenance
 class Gemstone {
-    constructor(id, name, description, color, origin, treatment, image, measurement, video, clarity) {
+    constructor(id, name, description, color, origin, treatment, image, measurement, video, clarity, video2 = null) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -12,6 +12,7 @@ class Gemstone {
         this.measurement = measurement;
         this.video = video;
         this.clarity = clarity;
+        this.video2 = video2;
     }
 }
 
@@ -35,7 +36,7 @@ export const gemstonesList = [
         'Royal Blue',
         'Sri Lanka',
         'Heated',
-        'stone2.jpg',
+        'stone2.png',
         '3.55ct',
         'BlueHuesGemsVideoCollection/stone2.mp4'
     ),
@@ -63,138 +64,258 @@ export const gemstonesList = [
     ),
     new Gemstone(
         5,
-        '10ct Heated Ceylon',
-        'A 10 carat Royal Blue Sapphire sourced from Sri Lanka, featuring an oval cut and heat treatment. Its deep vivid blue color and stunning brilliance render it a sophisticated gem piece.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone5.jpeg',
-        '10.00ct',
-        'BlueHuesGemsVideoCollection/stone5.mp4'
-    ),
-    new Gemstone(
-        6,
         '4ct Vivid Royal Blue H Big Face',
         'Experience the classic beauty of this 4 carat Ceylon sapphire, extracted from the renowned gemstone reserves of Sri Lanka.',
         'Royal Blue',
         'Sri Lanka',
         'Heated',
-        'stone6.jpeg',
+        'stone5.jpeg',
         '4.00ct',
-        'BlueHuesGemsVideoCollection/stone6.mp4'
+        'BlueHuesGemsVideoCollection/stone5.mp4'
     ),
     new Gemstone(
-        7,
+        6,
         'Cushion Royal Blue',
         'Uncover the enduring charm of this 4.02 carat Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a graceful cushion, this heated gem showcases a mesmerizing vivid royal blue color typical of genuine Ceylon sapphires.',
         'Royal Blue',
         'Sri Lanka',
         'Heated',
-        'stone7.jpeg',
+        'stone6.jpeg',
         '4.02ct',
-        'BlueHuesGemsVideoCollection/stone7.mp4'
+        'BlueHuesGemsVideoCollection/stone6.mp4'
     ),
     new Gemstone(
-        8,
-        'Heated Ceylon 6.07 CTs',
-        'Uncover the enduring charm of this 6.07 carat Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a graceful cushion, this heated gem showcases a mesmerizing vivid royal blue color typical of genuine Ceylon sapphires.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone8.jpeg',
-        '6.07ct',
-        'BlueHuesGemsVideoCollection/stone8.mp4'
-    ),
-    new Gemstone(
-        9,
-        '107.52 Carat Unheated',
-        'Explore the everlasting beauty of this 107.52 carat Ceylon unheated sapphire, extracted from the renowned gemstone mines of Sri Lanka.',
-        'Deep Blue',
-        'Sri Lanka',
-        'Natural',
-        'stone9.png',
-        '107.52ct',
-        'BlueHuesGemsVideoCollection/stone9.mp4'
-    ),
-    new Gemstone(
-        10,
+        7,
         '4.57 Carat Classic',
         'Experience the classic appeal of this 4.57 carat Ceylon sapphire, harvested from the distinguished gemstone locations in Sri Lanka.',
         'Royal Blue',
         'Sri Lanka',
         'Heated',
-        'stone10.png',
+        'stone7.jpg',
         '4.57ct',
-        'BlueHuesGemsVideoCollection/stone10.mp4'
+        'BlueHuesGemsVideoCollection/stone7.mp4'
     ),
     new Gemstone(
-        11,
-        'Royal Blue Oval',
-        'A gorgeous royal blue heated sapphire faceted in a classic oval-shaped design, 9.10 carats.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone11.png',
-        '9.10ct',
-        'BlueHuesGemsVideoCollection/stone11.mp4'
-    ),
-    new Gemstone(
-        12,
-        '6.57 CTs Natural Heated Blue Sapphire Ceylon',
-        'A gorgeous royal blue heated sapphire faceted in a classic oval-shaped design, 9.10 carats.',
-        'Royal Blue sapphire',
-        'Sri Lanka',
-        'Heated',
-        'stone12.png',
-        '6.57 CTS',
-        'BlueHuesGemsVideoCollection/stone12.mp4',
-        'Eye clean (VVS 2)'
-    ),
-    new Gemstone(
-        13,
-        'Natural Blue Sapphire (Unheated)',
-        'GRS Certified | 151.04 Carat Collector Grade Sapphire',
-        'Blue',
-        'Sri Lanka',
-        'Unheated',
-        'stone13.png',
-        '151.04 CTS (27.37 x 25.81 x 22.60 mm)',
-        'BlueHuesGemsVideoCollection/stone13.mp4',
-        'High Clarity (Eye Clean)'
-    ),
-    new Gemstone(
-        14,
-        'Royal Blue Sapphire',
+        8,
+        'Ruby Red Heated Ceylon Sapphire',
         'GIA Certified',
-        'Natural Blue Sapphire',
-        'Sri Lanka (Ceylon)',
+        'Intense Red',
+        'Burma',
         'Heat Treated',
-        'stone14.png',
+        'stone8.png',
         '1+ CTS',
-        'BlueHuesGemsVideoCollection/stone14.mp4',
+        'BlueHuesGemsVideoCollection/stone8.mp4',
         'Eye Clean (VVS2)'
     ),
     new Gemstone(
-        15,
+        9,
         '3.48 Cts heated Ceylon Sapphire',
         'GIA Certified',
         'Natural Blue Sapphire',
         'Sri Lanka (Ceylon)',
         'Heat Treated',
-        'stone15.png',
+        'stone9.png',
         '3.48 CTS',
-        'BlueHuesGemsVideoCollection/stone15.mp4',
+        'BlueHuesGemsVideoCollection/stone9.mp4',
+    ),
+    new Gemstone(
+        10,
+        'Natural Rhodolite / Rose Garnet',
+        'Beautiful mix lot of natural Rhodolite and Rose Garnet gemstones, showcasing vibrant pink to rose-red hues with excellent clarity.',
+        'Intense Red',
+        'Sri Lanka',
+        'Natural',
+        'stone10.png',
+        '45 CTS (1-5cts)',
+        'BlueHuesGemsVideoCollection/stone10.mp4'
+    ),
+    new Gemstone(
+        11,
+        '3.50 Cts Heated Ceylon Sapphire',
+        'A stunning 3.50 carat heated Ceylon sapphire, showcasing the classic royal blue hue that Sri Lankan sapphires are renowned for.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone11.jpeg',
+        '3.50ct',
+        'BlueHuesGemsVideoCollection/stone11.mp4'
+    ),
+    new Gemstone(
+        12,
+        '5mm Pairs Heated Ceylon Sapphire',
+        'Beautiful matched pairs of 5mm heated Ceylon sapphires, perfect for earrings or other jewelry designs. Each pair showcases consistent color and quality.',
+        'Vivid Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone12.jpeg',
+        '5mm Pairs',
+        'BlueHuesGemsVideoCollection/stone12.mp4',
+        null,
+        'BlueHuesGemsVideoCollection/stone12_1.mp4'
+    ),
+    new Gemstone(
+        13,
+        '3.65ct Heated Ceylon Sapphire',
+        'A magnificent 3.65 carat heated Ceylon sapphire, displaying the rich, vibrant blue color that premium Sri Lankan sapphires are celebrated for.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone13.jpeg',
+        '3.65ct',
+        'BlueHuesGemsVideoCollection/stone13.mp4'
+    ),
+    new Gemstone(
+        14,
+        'Ceylon Blue Sapphire Untreated 10.27 ct',
+        'Uncover the enduring charm of this 10.27 carat untreated Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a cushion, this unheated gem showcases a mesmerizing vivid blue color typical of genuine Ceylon sapphires.',
+        'Vivid Blue',
+        'Sri Lanka',
+        'Unheated',
+        'stone14.png',
+        '10.27ct',
+        'BlueHuesGemsVideoCollection/stone14.mp4'
     ),
     new Gemstone(
         15,
-        '3.11 Cts heated Ceylon Sapphire',
-        'GIA Certified',
-        'Natural Blue Sapphire',
-        'Sri Lanka (Ceylon)',
-        'Heat Treated',
+        '6.57 ct Heated Ceylon Sapphire',
+        'A stunning 6.57 carat heated Ceylon sapphire, featuring exceptional clarity and brilliant color. This premium gemstone comes with GGTL certification.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone15.jpg',
+        '6.57ct',
+        'BlueHuesGemsVideoCollection/stone15.mp4',
+        'GGTL Certified'
+    ),
+    new Gemstone(
+        16,
+        '2.56 Ct Cushion Sri Lankan Sapphire',
+        'Experience the pure elegance of this stunning 2.56 Ct, Cushion shape, a treasure from Sri Lanka\'s prestigious gemstone mines.',
+        'Deep Blue',
+        'Sri Lanka',
+        'Heated',
         'stone16.png',
-        '3.11 CTS',
-        'BlueHuesGemsVideoCollection/stone16.mp4',
+        '2.56ct',
+        'BlueHuesGemsVideoCollection/stone16.mp4'
+    ),
+    new Gemstone(
+        17,
+        'Ceylon Blue Sapphire Heated Stone',
+        '1.25 Ct cornflower blue sapphire, Cushion-cut and heat-treated. Its medium, velvety blue hue, combined with its remarkable cut, gives this stone an exceptional presence, ideal for a timeless jewelry creation.',
+        'Cornflower Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone17.png',
+        '1.25ct',
+        'BlueHuesGemsVideoCollection/stone17.mp4'
+    ),
+    new Gemstone(
+        18,
+        'Natural Dravite Tourmaline Oval Cut 11.70 Ct and Earring Pair',
+        'Re-Cut more than a six months ago, this 11.70 Ct natural dravite tourmaline holds a story of gratitude and resilience. Sourced from my own native Ceylon and loupe clean, gem is re-Cut precision-faceted using traditional oval shape design — a pattern created in show my gratitude for miner who taught me about Core Gemological Concepts. The tourmaline exhibits a rich, earthen palette: deep molasses brown, flashes of olive and amber, with subtle golden undertones revealed through every pivot. The outline delivers a sharp, architectural brilliance — with a layered geometry that seems to ripple like shockwaves across the stone. In terms of Clarity, its Loupe clean with Deep earth brown with amber and olive flashes. This set faceted for earring pair and a timeless pendant.',
+        'Deep Earth Brown',
+        'Sri Lanka',
+        'Unheated',
+        'stone18.png',
+        '11.70ct + 1.55ct Pair',
+        'BlueHuesGemsVideoCollection/stone18.mp4'
+    ),
+    new Gemstone(
+        19,
+        'Ceylon Blue Sapphire Mix Cut Lot Heated',
+        'This heated blend of blue sapphires showcases a deep, vibrant royal-to-cornflower blue hue, featuring slight color zoning and an exceptional degree of brilliance.',
+        'Royal to Cornflower Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone19.jpeg',
+        '1+ Ct each stone (6 Stones Total)',
+        'BlueHuesGemsVideoCollection/stone19.mp4'
+    ),
+    new Gemstone(
+        20,
+        'Ceylon Natural Green Zircon Pair Oval 2.22 Ct',
+        'A lively apple green shade... remarkably striking in every lighting scenario... Entirely unprocessed and displaying a subtle apple green tint... this duo presents both uniqueness and character. Nearly 1.11 Ct for each gem.',
+        'Apple Green',
+        'Sri Lanka',
+        'Unheated',
+        'stone20.png',
+        '2.22ct (1.11ct each)',
+        'BlueHuesGemsVideoCollection/stone20.mp4'
+    ),
+    new Gemstone(
+        21,
+        'Natural Zircon Oval Cut Yellow-Green 4.99 Ct',
+        'Explore the exceptional charm of a 4.99 Ct natural Ceylon zircon, characterized by its rare yellowish-green color blend. This alluring oval stone presents a deep, fascinating apple yellowish-green tone.',
+        'Yellowish-Green',
+        'Sri Lanka',
+        'Unheated',
+        'stone21.png',
+        '4.99ct',
+        'BlueHuesGemsVideoCollection/stone21.mp4'
+    ),
+    new Gemstone(
+        22,
+        '0.76ct Royal Blue Cushion Sapphire',
+        'Natural heated blue sapphire with rich Royal Blue color. GGTL certified. Excellent mixed cut in cushion rectangular shape. Dimensions: 5.26 x 4.39 x 3.72 mm.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated (Indication of Heating)',
+        'stone22.png',                    // replace with actual image filename later
+        '0.76ct',
+        'BlueHuesGemsVideoCollection/stone22.mp4',
+        'GGTL No: 227362'
+    ),
+
+    new Gemstone(
+        23,
+        '0.65ct Heart Shape Royal Blue Sapphire',
+        'Beautiful natural heart-shaped heated blue sapphire in vivid Royal Blue. GGTL certified. Mixed cut. Dimensions: 5.40 x 5.12 x 3.08 mm.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated (Indication of Heating)',
+        'stone23.png',
+        '0.65ct',
+        'BlueHuesGemsVideoCollection/stone23.mp4',
+        'GGTL No: 227359'
+    ),
+
+    new Gemstone(
+        24,
+        '0.83ct Royal Blue Cushion Sapphire',
+        'Natural heated Ceylon sapphire in attractive Royal Blue. Slightly heated indication. GGTL certified. Cushion rectangular mixed cut. Dimensions: 5.05 x 4.78 x 4.04 mm.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated (Indication of Heating - Slightly)',
+        'stone24.png',
+        '0.83ct',
+        'BlueHuesGemsVideoCollection/stone24.mp4',
+        'GGTL No: 227360'
+    ),
+
+    new Gemstone(
+        25,
+        '0.85ct Cornflower Blue Heart Sapphire',
+        'Stunning natural heart-shaped blue sapphire with desirable Cornflower Blue color. GGTL certified. Mixed cut. Dimensions: 5.86 x 5.74 x 3.49 mm.',
+        'Cornflower Blue',
+        'Sri Lanka',
+        'Heated (Indication of Heating)',
+        'stone25.png',
+        '0.85ct',
+        'BlueHuesGemsVideoCollection/stone25.mp4',
+        'GGTL No: 227364'
+    ),
+
+    new Gemstone(
+        26,
+        '0.71ct Royal Blue Heart Sapphire',
+        'Natural heated heart-shaped blue sapphire in classic Royal Blue. GGTL certified. Mixed cut. Dimensions: 5.48 x 5.12 x 3.52 mm.',
+        'Royal Blue',
+        'Sri Lanka',
+        'Heated (Indication of Heating)',
+        'stone26.png',
+        '0.71ct',
+        'BlueHuesGemsVideoCollection/stone26.mp4',
+        'GGTL No: 227363'
     )
 ];
 

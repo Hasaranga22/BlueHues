@@ -3,7 +3,7 @@ import { gemstonesList } from '../components/Gemstone ';
 import InquirySliderModal from './InquirySliderModal';
 
 /* ─────────────────────────────────────────────
-   GLOBAL STYLES  (injected once via <style>)
+   GLOBAL STYLES
 ───────────────────────────────────────────── */
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
@@ -168,7 +168,6 @@ const GLOBAL_CSS = `
     color: var(--gem-mid);
     line-height: 1.65;
     margin: 0;
-    /* clamp to 2 lines */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -207,64 +206,71 @@ const GLOBAL_CSS = `
   .gem-arrow-btn svg { transition: stroke 0.25s; }
   .gem-card:hover .gem-arrow-btn svg { stroke: #fff !important; }
 
+  /* ══════════════════════════════════════════
+     MODAL STYLES — side-by-side layout
+  ══════════════════════════════════════════ */
+
   /* ── OVERLAY ────────────────────────────── */
   .gem-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(8, 7, 6, 0.84);
-    backdrop-filter: blur(12px);
+    background: rgba(8, 7, 6, 0.88);
+    backdrop-filter: blur(14px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 16px;
     animation: ovIn 0.3s var(--ease-expo) both;
   }
   @keyframes ovIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* ── MODAL ──────────────────────────────── */
+  /* ── MODAL SHELL ─────────────────────────── */
   .gem-modal {
     position: relative;
     background: #fff;
     border-radius: var(--modal-r);
     width: 100%;
-    max-width: 960px;
+    max-width: 1020px;
     max-height: 92vh;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     animation: mdIn 0.45s var(--ease-expo) both;
-    box-shadow: 0 48px 96px rgba(8,7,6,0.50);
+    box-shadow: 0 56px 112px rgba(8,7,6,0.55);
   }
   @keyframes mdIn {
     from { opacity: 0; transform: scale(0.93) translateY(24px); }
     to   { opacity: 1; transform: scale(1) translateY(0); }
   }
 
-  /* ── MODAL VIDEO ZONE ───────────────────── */
+  /* ── LEFT: VIDEO STRIP ───────────────────── */
   .gem-vid-zone {
     position: relative;
-    flex-shrink: 0;
-    height: 340px;
+    flex: 0 0 42%;
     background: #0d0c0a;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
   }
-  @media (min-width: 600px) { .gem-vid-zone { height: 400px; } }
 
   .gem-vid-grid {
+    flex: 1;
     display: grid;
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
-  .gem-vid-grid.single { grid-template-columns: 1fr; }
-  .gem-vid-grid.dual   { grid-template-columns: 1fr 1fr; }
+  .gem-vid-grid.single { grid-template-rows: 1fr; }
+  .gem-vid-grid.dual   { grid-template-rows: 1fr 1fr; }
 
-  /* thin divider between dual videos */
+  /* horizontal divider between stacked dual videos */
   .gem-vid-sep {
     position: absolute;
-    top: 0; bottom: 0;
-    left: 50%;
-    width: 1px;
+    left: 0; right: 0;
+    top: 50%;
+    height: 1px;
+    width: 100%;
     background: rgba(255,255,255,0.07);
     z-index: 10;
     pointer-events: none;
@@ -276,8 +282,17 @@ const GLOBAL_CSS = `
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   .gem-vid-panel video {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gem-vid-panel img {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -294,30 +309,17 @@ const GLOBAL_CSS = `
     position: absolute;
     inset: 0;
     z-index: 3;
-    background: linear-gradient(to bottom, transparent 28%, rgba(8,7,6,0.55) 100%);
+    background: linear-gradient(to bottom, transparent 40%, rgba(8,7,6,0.72) 100%);
     pointer-events: none;
   }
 
-  /* view labels (dual) */
-  .gem-view-label {
-    position: absolute;
-    bottom: 14px;
-    z-index: 20;
-    font-family: var(--gem-sans);
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.42);
-    pointer-events: none;
-  }
-
-  /* name bar */
+  /* name bar — sits at bottom of left panel */
   .gem-namebar {
     position: absolute;
     bottom: 0; left: 0; right: 0;
     z-index: 15;
-    padding: 18px 26px 22px;
-    background: linear-gradient(to top, rgba(8,7,6,0.78) 0%, transparent 100%);
+    padding: 28px 24px 26px;
+    background: linear-gradient(to top, rgba(8,7,6,0.85) 0%, transparent 100%);
     pointer-events: none;
   }
   .gem-namebar-eye {
@@ -326,20 +328,20 @@ const GLOBAL_CSS = `
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--gem-gold);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .gem-namebar-title {
     font-family: var(--gem-serif);
-    font-size: clamp(26px, 4vw, 38px);
+    font-size: clamp(24px, 3.5vw, 36px);
     font-weight: 300;
     font-style: italic;
     color: #fff;
     margin: 0;
     line-height: 1.1;
-    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.4);
   }
 
-  /* close button */
+  /* close button — top-right of left video panel */
   .gem-close {
     position: absolute;
     top: 14px; right: 14px;
@@ -357,21 +359,23 @@ const GLOBAL_CSS = `
   }
   .gem-close:hover { background: rgba(8,7,6,0.88); transform: scale(1.08); }
 
-  /* ── MODAL BODY ─────────────────────────── */
+  /* ── RIGHT: DETAILS PANEL ────────────────── */
   .gem-body {
     flex: 1;
     overflow-y: auto;
-    padding: 28px 26px 36px;
+    padding: 36px 32px 40px;
+    display: flex;
+    flex-direction: column;
   }
-  @media (min-width: 600px) { .gem-body { padding: 32px 36px 44px; } }
 
   .gem-body-grid {
-    display: grid;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
   }
-  @media (min-width: 580px) { .gem-body-grid { grid-template-columns: 1fr 1fr; gap: 44px; } }
 
-  /* ── LEFT COLUMN ────────────────────────── */
+  /* ── MEASUREMENT ─────────────────────────── */
   .gem-meas-label {
     font-family: var(--gem-sans);
     font-size: 10px;
@@ -383,7 +387,7 @@ const GLOBAL_CSS = `
   }
   .gem-meas-val {
     font-family: var(--gem-serif);
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 300;
     color: var(--gem-stone);
     line-height: 1;
@@ -394,6 +398,8 @@ const GLOBAL_CSS = `
     background: var(--gem-border);
     margin: 22px 0;
   }
+
+  /* ── ABOUT ───────────────────────────────── */
   .gem-about-label {
     font-family: var(--gem-sans);
     font-size: 10px;
@@ -405,15 +411,51 @@ const GLOBAL_CSS = `
   }
   .gem-about-text {
     font-family: var(--gem-sans);
-    font-size: 14px;
+    font-size: 13.5px;
     color: #4a4642;
     line-height: 1.78;
     margin: 0;
   }
 
-  /* certificate */
+  /* ── SPECS ───────────────────────────────── */
+  .gem-specs-head {
+    font-family: var(--gem-sans);
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--gem-mid);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .gem-specs { display: flex; flex-direction: column; }
+  .gem-spec-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--gem-border);
+  }
+  .gem-spec-row:first-child { padding-top: 0; }
+  .gem-spec-row:last-child  { border-bottom: none; padding-bottom: 0; }
+  .gem-spec-k {
+    font-family: var(--gem-sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gem-mid);
+    min-width: 80px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  .gem-spec-v {
+    font-family: var(--gem-sans);
+    font-size: 13.5px;
+    color: var(--gem-stone);
+    line-height: 1.45;
+  }
+
+  /* ── CERTIFICATE ─────────────────────────── */
   .gem-cert {
-    margin-top: 22px;
     border: 1px solid var(--gem-border);
     border-radius: 10px;
     overflow: hidden;
@@ -447,7 +489,7 @@ const GLOBAL_CSS = `
   .gem-cert-img img {
     width: 100%;
     height: auto;
-    max-height: 170px;
+    max-height: 140px;
     object-fit: contain;
     border-radius: 6px;
     border: 1px solid var(--gem-border);
@@ -471,48 +513,11 @@ const GLOBAL_CSS = `
   }
   .gem-cert-link:hover { background: var(--gem-cream); border-color: var(--gem-gold); }
 
-  /* ── RIGHT COLUMN ───────────────────────── */
-  .gem-specs-head {
-    font-family: var(--gem-sans);
-    font-size: 10px;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    color: var(--gem-mid);
-    margin: 0 0 18px;
-    font-weight: 500;
+  /* ── CTA ─────────────────────────────────── */
+  .gem-cta-wrap {
+    margin-top: auto;
+    padding-top: 24px;
   }
-  .gem-specs {
-    display: flex;
-    flex-direction: column;
-  }
-  .gem-spec-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    padding: 13px 0;
-    border-bottom: 1px solid var(--gem-border);
-  }
-  .gem-spec-row:first-child { padding-top: 0; }
-  .gem-spec-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .gem-spec-k {
-    font-family: var(--gem-sans);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gem-mid);
-    min-width: 84px;
-    flex-shrink: 0;
-    font-weight: 500;
-  }
-  .gem-spec-v {
-    font-family: var(--gem-sans);
-    font-size: 14px;
-    color: var(--gem-stone);
-    line-height: 1.45;
-  }
-
-  /* CTA */
-  .gem-cta-wrap { margin-top: 28px; }
   .gem-cta {
     display: inline-flex;
     align-items: center;
@@ -539,15 +544,25 @@ const GLOBAL_CSS = `
     margin-top: 10px;
   }
 
-  /* ── RESPONSIVE: stack on mobile ───────── */
-  @media (max-width: 499px) {
-    .gem-vid-grid.dual {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+  /* ── MOBILE: stack vertically under 700px ── */
+  @media (max-width: 699px) {
+    .gem-modal {
+      flex-direction: column;
+      max-height: 95vh;
     }
-    .gem-vid-sep { top: 50%; left: 0; right: 0; bottom: auto; width: 100%; height: 1px; }
-    .gem-vid-zone { height: 460px; }
-    .gem-view-label { display: none; }
+    .gem-vid-zone {
+      flex: 0 0 300px;
+      min-height: 300px;
+      height: 300px;
+    }
+    .gem-vid-grid.dual {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+    }
+    .gem-vid-grid.dual .gem-vid-panel:last-child { display: none; }
+    .gem-vid-sep { display: none; }
+    .gem-body { padding: 24px 20px 32px; }
+    .gem-cta-wrap { padding-top: 16px; }
   }
 `;
 
@@ -588,13 +603,6 @@ function VideoPanel({ src, gemName, isImage = false }) {
                 <img
                     src={src}
                     alt={`${gemName} — natural Sri Lankan gemstone`}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        position: 'relative',
-                        zIndex: 2
-                    }}
                 />
             ) : (
                 <video autoPlay loop muted playsInline>
@@ -607,7 +615,7 @@ function VideoPanel({ src, gemName, isImage = false }) {
 }
 
 /* ─────────────────────────────────────────────
-   GemstoneModal
+   GemstoneModal — side-by-side layout
 ───────────────────────────────────────────── */
 function GemstoneModal({ gemstone, isOpen, onClose }) {
     const [contactOpen, setContactOpen] = useState(false);
@@ -626,19 +634,19 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
     if (!isOpen || !gemstone) return null;
 
     const dual    = Boolean(gemstone.video2);
-    const hasCert = Boolean(gemstone.clarity?.toLowerCase().includes('certified') || gemstone.clarity?.toLowerCase().includes('ggtl'));
-    
-    // Check if gemstone should show image instead of video
+    const hasCert = Boolean(
+        gemstone.clarity?.toLowerCase().includes('certified') ||
+        gemstone.clarity?.toLowerCase().includes('ggtl')
+    );
     const isImageGem = [22, 23, 24, 25, 26].includes(gemstone.id);
 
-    // build spec rows (only defined values)
     const specs = [
         { k: 'Origin',    v: gemstone.origin },
         { k: 'Color',     v: gemstone.color },
         { k: 'Treatment', v: gemstone.treatment },
         !hasCert && gemstone.clarity ? { k: 'Clarity', v: gemstone.clarity } : null,
-        gemstone.carat ? { k: 'Carat',   v: gemstone.carat } : null,
-        gemstone.shape ? { k: 'Shape',   v: gemstone.shape } : null,
+        gemstone.carat ? { k: 'Carat',  v: gemstone.carat  } : null,
+        gemstone.shape ? { k: 'Shape',  v: gemstone.shape  } : null,
     ].filter(Boolean);
 
     return (
@@ -646,32 +654,37 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
             <div className="gem-overlay" onClick={onClose}>
                 <div className="gem-modal" onClick={(e) => e.stopPropagation()}>
 
-                    {/* ── Video zone ── */}
+                    {/* ══════════ LEFT — vertical video strip ══════════ */}
                     <div className="gem-vid-zone">
+
                         <div className={`gem-vid-grid ${dual ? 'dual' : 'single'}`}>
-                            <VideoPanel 
-                                src={isImageGem ? `/images/BlueHuesGemsCollection/${gemstone.image}` : `/videos/${gemstone.video}`} 
-                                gemName={gemstone.name} 
+                            <VideoPanel
+                                src={isImageGem
+                                    ? `/images/BlueHuesGemsCollection/${gemstone.image}`
+                                    : `/videos/${gemstone.video}`}
+                                gemName={gemstone.name}
                                 isImage={isImageGem}
                             />
-                            {dual && <VideoPanel 
-                                src={isImageGem ? `/images/BlueHuesGemsCollection/${gemstone.image}` : `/videos/${gemstone.video2}`} 
-                                gemName={gemstone.name} 
-                                isImage={isImageGem}
-                            />}
+                            {dual && (
+                                <VideoPanel
+                                    src={isImageGem
+                                        ? `/images/BlueHuesGemsCollection/${gemstone.image}`
+                                        : `/videos/${gemstone.video2}`}
+                                    gemName={gemstone.name}
+                                    isImage={isImageGem}
+                                />
+                            )}
                         </div>
 
-                        {dual && (
-                            <div className="gem-vid-sep" />
-                        )}
+                        {dual && <div className="gem-vid-sep" />}
 
-                        {/* name bar */}
+                        {/* gem name — bottom of video strip */}
                         <div className="gem-namebar">
                             <p className="gem-namebar-eye">Natural Gemstone · Sri Lanka</p>
                             <h2 className="gem-namebar-title">{gemstone.name}</h2>
                         </div>
 
-                        {/* close */}
+                        {/* close button anchored to video panel */}
                         <button className="gem-close" onClick={onClose} aria-label="Close modal">
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                                 <path d="M1 1l11 11M12 1L1 12" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
@@ -679,21 +692,43 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                         </button>
                     </div>
 
-                    {/* ── Body ── */}
+                    {/* ══════════ RIGHT — details panel ══════════ */}
                     <div className="gem-body gem-scroll">
                         <div className="gem-body-grid">
 
-                            {/* LEFT */}
+                            {/* Measurement */}
                             <div>
                                 <p className="gem-meas-label">Measurement</p>
                                 <p className="gem-meas-val">{formatMeasurement(gemstone.measurement)}</p>
+                            </div>
 
-                                <div className="gem-rule-sm" />
+                            <div className="gem-rule-sm" />
 
+                            {/* About */}
+                            <div>
                                 <p className="gem-about-label">About this stone</p>
                                 <p className="gem-about-text">{gemstone.description}</p>
+                            </div>
 
-                                {hasCert && (
+                            <div className="gem-rule-sm" />
+
+                            {/* Specifications */}
+                            <div>
+                                <p className="gem-specs-head">Specifications</p>
+                                <div className="gem-specs">
+                                    {specs.map(({ k, v }) => (
+                                        <div className="gem-spec-row" key={k}>
+                                            <span className="gem-spec-k">{k}</span>
+                                            <span className="gem-spec-v">{v}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Certificate (if applicable) */}
+                            {hasCert && (
+                                <>
+                                    <div className="gem-rule-sm" />
                                     <div className="gem-cert">
                                         <div className="gem-cert-head">
                                             <div className="gem-cert-badge">
@@ -717,36 +752,23 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                             View full certificate
                                         </button>
                                     </div>
-                                )}
-                            </div>
+                                </>
+                            )}
 
-                            {/* RIGHT */}
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-                                <div>
-                                    <p className="gem-specs-head">Specifications</p>
-                                    <div className="gem-specs">
-                                        {specs.map(({ k, v }) => (
-                                            <div className="gem-spec-row" key={k}>
-                                                <span className="gem-spec-k">{k}</span>
-                                                <span className="gem-spec-v">{v}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="gem-cta-wrap">
-                                    <button className="gem-cta" onClick={() => setContactOpen(true)}>
-                                        Inquire About This Gemstone
-                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                                            <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </button>
-                                    <p className="gem-cta-note">We respond within 24 hours</p>
-                                </div>
+                            {/* CTA — pushed to bottom */}
+                            <div className="gem-cta-wrap">
+                                <button className="gem-cta" onClick={() => setContactOpen(true)}>
+                                    Inquire About This Gemstone
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                        <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+                                <p className="gem-cta-note">We respond within 24 hours</p>
                             </div>
 
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -775,7 +797,6 @@ function GemstoneCard({ gemstone, index, onCardClick }) {
         return () => obs.disconnect();
     }, []);
 
-    // clamp description to ~14 words for card preview
     const preview = (() => {
         if (!gemstone.description) return '';
         const words = gemstone.description.split(' ');
@@ -818,7 +839,7 @@ function GemstoneCard({ gemstone, index, onCardClick }) {
 }
 
 /* ─────────────────────────────────────────────
-   OurGemstones  — main export
+   OurGemstones — main export
 ───────────────────────────────────────────── */
 function OurGemstones() {
     const [headerIn, setHeaderIn] = useState(false);
@@ -836,7 +857,7 @@ function OurGemstones() {
     }, []);
 
     const openModal  = (gem) => { setSelected(gem); setModalOpen(true); };
-    const closeModal = ()    => {
+    const closeModal = () => {
         setModalOpen(false);
         setTimeout(() => setSelected(null), 500);
     };

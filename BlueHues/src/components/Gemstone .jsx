@@ -30,28 +30,6 @@ export const gemstonesList = [
         'BlueHuesGemsVideoCollection/stone1.mp4'
     ),
     new Gemstone(
-        2,
-        'Royal Blue Sapphire',
-        'Explore the everlasting appeal of this 3.55 carat Ceylon sapphire, harvested from Sri Lanka\'s distinguished gemstone sources. Crafted into an elegant cushion design.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone2.png',
-        '3.55ct',
-        'BlueHuesGemsVideoCollection/stone2.mp4'
-    ),
-    new Gemstone(
-        3,
-        'Heated Ceylon Sapphire',
-        'A stunning vivid blue heated sapphire, cut in a traditional cushion shape, weighing 3.06 carats.',
-        'Vivid Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone3.jpg',
-        '3.06ct',
-        'BlueHuesGemsVideoCollection/stone3.mp4'
-    ),
-    new Gemstone(
         4,
         'Blue Sapphire Loupe Clean',
         'A beautiful heated sapphire in royal blue, elegantly faceted in a timeless cushion shape, with a total weight of 4.30 carats.',
@@ -63,41 +41,8 @@ export const gemstonesList = [
         'BlueHuesGemsVideoCollection/stone4.mp4'
     ),
     new Gemstone(
-        5,
-        '4ct Vivid Royal Blue H Big Face',
-        'Experience the classic beauty of this 4 carat Ceylon sapphire, extracted from the renowned gemstone reserves of Sri Lanka.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone5.jpeg',
-        '4.00ct',
-        'BlueHuesGemsVideoCollection/stone5.mp4'
-    ),
-    new Gemstone(
-        6,
-        'Cushion Royal Blue',
-        'Uncover the enduring charm of this 4.02 carat Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a graceful cushion, this heated gem showcases a mesmerizing vivid royal blue color typical of genuine Ceylon sapphires.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone6.jpeg',
-        '4.02ct',
-        'BlueHuesGemsVideoCollection/stone6.mp4'
-    ),
-    new Gemstone(
-        7,
-        '4.57 Carat Classic',
-        'Experience the classic appeal of this 4.57 carat Ceylon sapphire, harvested from the distinguished gemstone locations in Sri Lanka.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone7.jpg',
-        '4.57ct',
-        'BlueHuesGemsVideoCollection/stone7.mp4'
-    ),
-    new Gemstone(
         8,
-        'Ruby Red Heated Ceylon Sapphire',
+        'Ruby’s',
         'GIA Certified',
         'Intense Red',
         'Burma',
@@ -240,7 +185,9 @@ export const gemstonesList = [
         'Unheated',
         'stone20.png',
         '2.22ct (1.11ct each)',
-        'BlueHuesGemsVideoCollection/stone20.mp4'
+        'BlueHuesGemsVideoCollection/stone20.mp4',
+        null,
+        'BlueHuesGemsVideoCollection/stone20-1.mp4'
     ),
     new Gemstone(
         21,

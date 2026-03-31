@@ -636,7 +636,10 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
     const dual    = Boolean(gemstone.video2);
     const hasCert = Boolean(
         gemstone.clarity?.toLowerCase().includes('certified') ||
-        gemstone.clarity?.toLowerCase().includes('ggtl')
+        gemstone.clarity?.toLowerCase().includes('ggtl') ||
+        gemstone.description?.toLowerCase().includes('certified') ||
+        gemstone.description?.toLowerCase().includes('gia') ||
+        [8, 15, 20, 22, 23, 24, 25, 26].includes(gemstone.id)
     );
     const isImageGem = [22, 23, 24, 25, 26].includes(gemstone.id);
 
@@ -736,14 +739,16 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                                     <path d="M1.5 5.5l3 3 5-5" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                             </div>
-                                            <span className="gem-cert-name">{gemstone.clarity}</span>
+                                            <span className="gem-cert-name">
+                                                {gemstone.description?.toLowerCase().includes('gia') ? gemstone.description : gemstone.clarity}
+                                            </span>
                                         </div>
                                         <div className="gem-cert-img">
-                                            <img src={`/images/certificate/stone${gemstone.id}-certificate.png`} alt="Certificate" />
+                                            <img src={`/images/certificate/stone${gemstone.id}-certificate.${[8, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`} alt="Certificate" />
                                         </div>
                                         <button
                                             className="gem-cert-link"
-                                            onClick={() => window.open(`/images/certificate/stone${gemstone.id}-certificate.png`, '_blank')}
+                                            onClick={() => window.open(`/images/certificate/stone${gemstone.id}-certificate.${[8, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`, '_blank')}
                                         >
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                                                 <path d="M1 8.5v2h10v-2M6 1v7M3.5 5.5L6 8l2.5-2.5"

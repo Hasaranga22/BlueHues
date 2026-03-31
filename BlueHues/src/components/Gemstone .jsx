@@ -22,27 +22,16 @@ export const gemstonesList = [
         1,
         'Blue Sapphire',
         'Uncover the enduring charm of this 3.48 carat Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a cushion, this heated gem showcases a mesmerizing vivid blue color typical of genuine Ceylon sapphires.',
-        'Deep Blue',
+        'vivid Blue',
         'Sri Lanka',
         'Heated',
         'stone1.jpg',
         '3.48ct',
         'BlueHuesGemsVideoCollection/stone1.mp4'
     ),
-    // new Gemstone(
-    //     4,
-    //     'Blue Sapphire Loupe Clean',
-    //     'A beautiful heated sapphire in royal blue, elegantly faceted in a timeless cushion shape, with a total weight of 4.30 carats.',
-    //     'Royal Blue',
-    //     'Sri Lanka',
-    //     'Heated',
-    //     'stone4.jpeg',
-    //     '4.30ct',
-    //     'BlueHuesGemsVideoCollection/stone4.mp4'
-    // ),
     new Gemstone(
         8,
-        'Ruby’s',
+        'Natural Ruby Burma round cut 1+ Ct',
         'GIA Certified',
         'Intense Red',
         'Burma',
@@ -52,17 +41,6 @@ export const gemstonesList = [
         'BlueHuesGemsVideoCollection/stone8.mp4',
         'Eye Clean (VVS2)'
     ),
-    // new Gemstone(
-    //     9,
-    //     '3.48 Cts heated Ceylon Sapphire',
-    //     'GIA Certified',
-    //     'Natural Blue Sapphire',
-    //     'Sri Lanka (Ceylon)',
-    //     'Heat Treated',
-    //     'stone9.png',
-    //     '3.48 CTS',
-    //     'BlueHuesGemsVideoCollection/stone9.mp4',
-    // ),
     new Gemstone(
         10,
         'Natural Rhodolite / Rose Garnet',
@@ -122,13 +100,13 @@ export const gemstonesList = [
     ),
     new Gemstone(
         15,
-        '6.57 ct Heated Ceylon Sapphire',
-        'A stunning 6.57 carat heated Ceylon sapphire, featuring exceptional clarity and brilliant color. This premium gemstone comes with GGTL certification.',
-        'Royal Blue',
+        '6.58 ct Heated Ceylon Sapphire',
+        'A stunning 6.58 carat heated Ceylon sapphire, featuring exceptional clarity and brilliant color. This premium gemstone comes with GGTL certification.',
+        'Vivid Blue',
         'Sri Lanka',
         'Heated',
-        'stone15.jpg',
-        '6.57ct',
+        'stone15.jpeg',
+        '6.58ct',
         'BlueHuesGemsVideoCollection/stone15.mp4',
         'GGTL Certified'
     ),
@@ -136,7 +114,7 @@ export const gemstonesList = [
         16,
         '2.56 Ct Cushion Sri Lankan Sapphire',
         'Experience the pure elegance of this stunning 2.56 Ct, Cushion shape, a treasure from Sri Lanka\'s prestigious gemstone mines.',
-        'Deep Blue',
+        'Royal Blue',
         'Sri Lanka',
         'Heated',
         'stone16.png',
@@ -161,9 +139,11 @@ export const gemstonesList = [
         'Deep Earth Brown',
         'Sri Lanka',
         'Unheated',
-        'stone18.png',
+        'stone18.jpeg',
         '11.70ct + 1.55ct Pair',
-        'BlueHuesGemsVideoCollection/stone18.mp4'
+        'BlueHuesGemsVideoCollection/stone18.mp4',
+        null,
+        'BlueHuesGemsVideoCollection/stone18-1.mp4'
     ),
     new Gemstone(
         19,
@@ -185,8 +165,6 @@ export const gemstonesList = [
         'Unheated',
         'stone20.png',
         '2.22ct (1.11ct each)',
-        'BlueHuesGemsVideoCollection/stone20.mp4',
-        null,
         'BlueHuesGemsVideoCollection/stone20-1.mp4'
     ),
     new Gemstone(
@@ -196,9 +174,20 @@ export const gemstonesList = [
         'Yellowish-Green',
         'Sri Lanka',
         'Unheated',
-        'stone21.png',
+        'stone21.jpeg',
         '4.99ct',
         'BlueHuesGemsVideoCollection/stone21.mp4'
+    ),
+    new Gemstone(
+        22,
+        'Ceylon Blue Sapphire 3.07 Ct Heated',
+        'Experience the captivating beauty of this 3.07 carat heated Ceylon blue sapphire, showcasing a vivid blue hue that exemplifies the finest Sri Lankan gemstone tradition. The cushion cut enhances the stones natural brilliance, creating a mesmerizing play of light across its well-proportioned facets. This exceptional gemstone embodies the rich color saturation and clarity that Ceylon sapphires are renowned for worldwide.',
+        'Vivid Blue',
+        'Sri Lanka',
+        'Heated',
+        'stone22.png',
+        '3.07ct',
+        'BlueHuesGemsVideoCollection/stone22.mp4'
     )
 ];
 

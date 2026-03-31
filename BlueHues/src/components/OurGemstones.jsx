@@ -639,9 +639,9 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
         gemstone.clarity?.toLowerCase().includes('ggtl') ||
         gemstone.description?.toLowerCase().includes('certified') ||
         gemstone.description?.toLowerCase().includes('gia') ||
-        [8, 14, 15, 17, 20, 22, 23, 24, 25, 26].includes(gemstone.id)
+        [8, 14, 15, 17, 20, 23, 24, 25, 26].includes(gemstone.id)
     );
-    const isImageGem = [22, 23, 24, 25, 26].includes(gemstone.id);
+    const isImageGem = [23, 24, 25, 26].includes(gemstone.id);
 
     const specs = [
         { k: 'Origin',    v: gemstone.origin },
@@ -712,6 +712,17 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                 <p className="gem-about-label">About this stone</p>
                                 <p className="gem-about-text">{gemstone.description}</p>
                             </div>
+
+                            {/* Availability (for stone 12 only) */}
+                            {gemstone.id === 12 && (
+                                <>
+                                    <div className="gem-rule-sm" />
+                                    <div>
+                                        <p className="gem-about-label">Availability</p>
+                                        <p className="gem-about-text">Year round</p>
+                                    </div>
+                                </>
+                            )}
 
                             <div className="gem-rule-sm" />
 

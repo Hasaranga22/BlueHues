@@ -45,7 +45,7 @@ function Footer() {
                             <p className="text-slate-400 text-sm">
                                 Blue Hues Ceylon<br />
                                 East Tower, World Trade Center<br />
-                                Hilton Dr, Echelon Square<br />
+                                Echelon Square<br />
                                 Colombo 00100, Sri Lanka
                                 <br />
                                 info@bluehuceseylon.com

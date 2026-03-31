@@ -386,7 +386,7 @@ const GLOBAL_CSS = `
     font-weight: 500;
   }
   .gem-meas-val {
-    font-family: var(--gem-serif);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
     font-size: 40px;
     font-weight: 300;
     color: var(--gem-stone);
@@ -639,7 +639,7 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
         gemstone.clarity?.toLowerCase().includes('ggtl') ||
         gemstone.description?.toLowerCase().includes('certified') ||
         gemstone.description?.toLowerCase().includes('gia') ||
-        [8, 15, 20, 22, 23, 24, 25, 26].includes(gemstone.id)
+        [8, 14, 15, 17, 20, 22, 23, 24, 25, 26].includes(gemstone.id)
     );
     const isImageGem = [22, 23, 24, 25, 26].includes(gemstone.id);
 
@@ -744,7 +744,7 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                             </span>
                                         </div>
                                         <div className="gem-cert-img">
-                                            <img src={`/images/certificate/stone${gemstone.id}-certificate.${[8, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`} alt="Certificate" />
+                                            <img src={`/images/certificate/stone${gemstone.id}-certificate.${[8, 14, 17, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`} alt="Certificate" />
                                         </div>
                                         <button
                                             className="gem-cert-link"

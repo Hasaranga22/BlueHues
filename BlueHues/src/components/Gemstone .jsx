@@ -29,17 +29,17 @@ export const gemstonesList = [
         '3.48ct',
         'BlueHuesGemsVideoCollection/stone1.mp4'
     ),
-    new Gemstone(
-        4,
-        'Blue Sapphire Loupe Clean',
-        'A beautiful heated sapphire in royal blue, elegantly faceted in a timeless cushion shape, with a total weight of 4.30 carats.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated',
-        'stone4.jpeg',
-        '4.30ct',
-        'BlueHuesGemsVideoCollection/stone4.mp4'
-    ),
+    // new Gemstone(
+    //     4,
+    //     'Blue Sapphire Loupe Clean',
+    //     'A beautiful heated sapphire in royal blue, elegantly faceted in a timeless cushion shape, with a total weight of 4.30 carats.',
+    //     'Royal Blue',
+    //     'Sri Lanka',
+    //     'Heated',
+    //     'stone4.jpeg',
+    //     '4.30ct',
+    //     'BlueHuesGemsVideoCollection/stone4.mp4'
+    // ),
     new Gemstone(
         8,
         'Ruby’s',
@@ -52,17 +52,17 @@ export const gemstonesList = [
         'BlueHuesGemsVideoCollection/stone8.mp4',
         'Eye Clean (VVS2)'
     ),
-    new Gemstone(
-        9,
-        '3.48 Cts heated Ceylon Sapphire',
-        'GIA Certified',
-        'Natural Blue Sapphire',
-        'Sri Lanka (Ceylon)',
-        'Heat Treated',
-        'stone9.png',
-        '3.48 CTS',
-        'BlueHuesGemsVideoCollection/stone9.mp4',
-    ),
+    // new Gemstone(
+    //     9,
+    //     '3.48 Cts heated Ceylon Sapphire',
+    //     'GIA Certified',
+    //     'Natural Blue Sapphire',
+    //     'Sri Lanka (Ceylon)',
+    //     'Heat Treated',
+    //     'stone9.png',
+    //     '3.48 CTS',
+    //     'BlueHuesGemsVideoCollection/stone9.mp4',
+    // ),
     new Gemstone(
         10,
         'Natural Rhodolite / Rose Garnet',
@@ -199,70 +199,6 @@ export const gemstonesList = [
         'stone21.png',
         '4.99ct',
         'BlueHuesGemsVideoCollection/stone21.mp4'
-    ),
-    new Gemstone(
-        22,
-        '0.76ct Royal Blue Cushion Sapphire',
-        'Natural heated blue sapphire with rich Royal Blue color. GGTL certified. Excellent mixed cut in cushion rectangular shape. Dimensions: 5.26 x 4.39 x 3.72 mm.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated (Indication of Heating)',
-        'stone22.png',                    // replace with actual image filename later
-        '0.76ct',
-        'BlueHuesGemsVideoCollection/stone22.mp4',
-        'GGTL No: 227362'
-    ),
-
-    new Gemstone(
-        23,
-        '0.65ct Heart Shape Royal Blue Sapphire',
-        'Beautiful natural heart-shaped heated blue sapphire in vivid Royal Blue. GGTL certified. Mixed cut. Dimensions: 5.40 x 5.12 x 3.08 mm.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated (Indication of Heating)',
-        'stone23.png',
-        '0.65ct',
-        'BlueHuesGemsVideoCollection/stone23.mp4',
-        'GGTL No: 227359'
-    ),
-
-    new Gemstone(
-        24,
-        '0.83ct Royal Blue Cushion Sapphire',
-        'Natural heated Ceylon sapphire in attractive Royal Blue. Slightly heated indication. GGTL certified. Cushion rectangular mixed cut. Dimensions: 5.05 x 4.78 x 4.04 mm.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated (Indication of Heating - Slightly)',
-        'stone24.png',
-        '0.83ct',
-        'BlueHuesGemsVideoCollection/stone24.mp4',
-        'GGTL No: 227360'
-    ),
-
-    new Gemstone(
-        25,
-        '0.85ct Cornflower Blue Heart Sapphire',
-        'Stunning natural heart-shaped blue sapphire with desirable Cornflower Blue color. GGTL certified. Mixed cut. Dimensions: 5.86 x 5.74 x 3.49 mm.',
-        'Cornflower Blue',
-        'Sri Lanka',
-        'Heated (Indication of Heating)',
-        'stone25.png',
-        '0.85ct',
-        'BlueHuesGemsVideoCollection/stone25.mp4',
-        'GGTL No: 227364'
-    ),
-
-    new Gemstone(
-        26,
-        '0.71ct Royal Blue Heart Sapphire',
-        'Natural heated heart-shaped blue sapphire in classic Royal Blue. GGTL certified. Mixed cut. Dimensions: 5.48 x 5.12 x 3.52 mm.',
-        'Royal Blue',
-        'Sri Lanka',
-        'Heated (Indication of Heating)',
-        'stone26.png',
-        '0.71ct',
-        'BlueHuesGemsVideoCollection/stone26.mp4',
-        'GGTL No: 227363'
     )
 ];
 

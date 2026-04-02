@@ -20,7 +20,7 @@ class Gemstone {
 export const gemstonesList = [
     new Gemstone(
         1,
-        'Blue Sapphire',
+        'Ceylon Blue sapphire 3.48 Ct heated',
         'Uncover the enduring charm of this 3.48 carat Ceylon sapphire, sourced from the esteemed gemstone mines of Sri Lanka. Shaped into a cushion, this heated gem showcases a mesmerizing vivid blue color typical of genuine Ceylon sapphires.',
         'vivid Blue',
         'Sri Lanka',
@@ -128,7 +128,7 @@ export const gemstonesList = [
         'Cornflower Blue',
         'Sri Lanka',
         'Heated',
-        'stone17.png',
+        'stone17.jpeg',
         '1.25ct',
         'BlueHuesGemsVideoCollection/stone17.mp4'
     ),

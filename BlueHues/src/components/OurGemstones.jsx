@@ -759,7 +759,7 @@ function GemstoneModal({ gemstone, isOpen, onClose }) {
                                         </div>
                                         <button
                                             className="gem-cert-link"
-                                            onClick={() => window.open(`/images/certificate/stone${gemstone.id}-certificate.${[8, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`, '_blank')}
+                                            onClick={() => window.open(`/images/certificate/stone${gemstone.id}-certificate.${[8, 14, 17, 20].includes(gemstone.id) ? 'jpeg' : 'png'}`, '_blank')}
                                         >
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                                                 <path d="M1 8.5v2h10v-2M6 1v7M3.5 5.5L6 8l2.5-2.5"
